@@ -16,16 +16,26 @@ function ScrollArrow() {
 
   const scrollToNextSection = () => {
     const viewportHeight = window.innerHeight;
+    const totalHeight = document.documentElement.scrollHeight;
+    const totalSections = getTotalSections();
     const nextSection = currentSection + 1;
-    const scrollTo = nextSection * viewportHeight;
 
-    window.scrollTo({
-      top: scrollTo,
-      behavior: 'smooth',
-    });
+    // If going to last section and it's shorter than viewport, scroll to bottom
+    if (nextSection === totalSections - 1) {
+      window.scrollTo({
+        top: totalHeight - viewportHeight,
+        behavior: 'smooth',
+      });
+    } else {
+      const scrollTo = nextSection * viewportHeight;
+      window.scrollTo({
+        top: scrollTo,
+        behavior: 'smooth',
+      });
+    }
 
     setCurrentSection(nextSection);
-    setHasScrolledDown(true); // Mark that down arrow has been used
+    setHasScrolledDown(true);
   };
 
   const scrollToPreviousSection = () => {
@@ -46,13 +56,25 @@ function ScrollArrow() {
     const handleScroll = () => {
       const scrolled = window.scrollY;
       const viewportHeight = window.innerHeight;
-      const currentSectionNum = Math.round(scrolled / viewportHeight);
+      const totalHeight = document.documentElement.scrollHeight;
       const totalSections = getTotalSections();
+
+      // Check if we're at the bottom (within 50px tolerance)
+      const isAtBottom = scrolled + viewportHeight >= totalHeight - 50;
+
+      let currentSectionNum;
+      if (isAtBottom) {
+        // If at bottom, we're in the last section
+        currentSectionNum = totalSections - 1;
+      } else {
+        // Otherwise calculate normally
+        currentSectionNum = Math.round(scrolled / viewportHeight);
+      }
 
       setCurrentSection(currentSectionNum);
 
       // Show down arrow if not at bottom
-      setIsDownVisible(currentSectionNum < totalSections - 1);
+      setIsDownVisible(!isAtBottom);
 
       // Show up arrow if has scrolled down and not at top
       setIsUpVisible(hasScrolledDown && currentSectionNum > 0);
@@ -63,6 +85,8 @@ function ScrollArrow() {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [hasScrolledDown]);
+
+  const totalSections = getTotalSections();
 
   return (
     <>
@@ -114,21 +138,18 @@ function ScrollArrow() {
             </svg>
           </button>
 
-          {/* Optional: Section indicator dots */}
+          {/* Section indicator dots */}
           <div className="flex justify-center mt-2 space-x-1">
-            {Array.from(
-              { length: Math.min(5, getTotalSections()) },
-              (_, index) => (
-                <div
-                  key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentSection
-                      ? 'bg-primary scale-125'
-                      : 'bg-primary/30'
-                  }`}
-                />
-              )
-            )}
+            {Array.from({ length: Math.min(5, totalSections) }, (_, index) => (
+              <div
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentSection
+                    ? 'bg-primary scale-125'
+                    : 'bg-primary/30'
+                }`}
+              />
+            ))}
           </div>
         </div>
       )}

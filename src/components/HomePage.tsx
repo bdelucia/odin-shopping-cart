@@ -4,6 +4,7 @@ import ScrollArrow from './ScrollArrow';
 import HorizontalCardScroller from './HorizontalCardScroller';
 import Hero from './Hero';
 import '../index.css';
+import Footer from './Footer';
 
 function HomePage() {
   return (
@@ -21,28 +22,13 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="h-[100vh] bg-base-100 flex items-center justify-center">
-        <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-8">About The Bob Shop</h2>
-          <p className="text-lg max-w-2xl mx-auto">
-            We've been providing quality products and exceptional service for
-            over a decade. Our commitment to excellence ensures you get the best
-            value for your money.
-          </p>
-        </div>
-      </section>
-
-      <section className="h-[100vh] bg-neutral text-neutral-content flex items-center justify-center">
-        <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-8">Get In Touch</h2>
-          <p className="text-lg mb-8">
-            Have questions? We'd love to hear from you!
-          </p>
-          <button className="btn btn-primary btn-lg">Contact Us</button>
-        </div>
+      <section className="h-[100vh] bg-base-100 flex flex-col items-center justify-center">
+        <Hero />
       </section>
 
       <ScrollArrow />
+
+      <Footer />
     </div>
   );
 }
