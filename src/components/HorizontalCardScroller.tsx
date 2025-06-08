@@ -25,6 +25,13 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
 
+  // Get current screen size
+  const getScreenSize = () => {
+    if (window.innerWidth >= 1024) return 'desktop'; // lg and up
+    if (window.innerWidth >= 768) return 'tablet'; // md
+    return 'mobile'; // sm and below
+  };
+
   // Check scroll position and update arrow visibility
   const checkScrollPosition = () => {
     if (scrollContainerRef.current) {
@@ -39,20 +46,66 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
     }
   };
 
-  // Scroll to beginning
-  const scrollToStart = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+  // Calculate scroll amount based on screen size
+  const getScrollAmount = (direction: 'left' | 'right') => {
+    if (!scrollContainerRef.current) return 0;
+
+    const container = scrollContainerRef.current;
+    const screenSize = getScreenSize();
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+
+    // Get card width (assuming all cards are same width)
+    const firstCard = container.querySelector('.flex-none');
+    if (!firstCard) return 0;
+
+    const cardWidth = firstCard.getBoundingClientRect().width;
+    const gap = 16; // gap-4 = 1rem = 16px
+
+    if (direction === 'left') {
+      switch (screenSize) {
+        case 'desktop':
+          return 0; // Scroll to start
+        case 'tablet':
+          return Math.max(0, scrollLeft - (cardWidth + gap) * 2);
+        case 'mobile':
+          return Math.max(0, scrollLeft - (cardWidth + gap));
+        default:
+          return 0;
+      }
+    } else {
+      // direction === 'right'
+      const maxScroll = scrollWidth - clientWidth;
+
+      switch (screenSize) {
+        case 'desktop':
+          return maxScroll; // Scroll to end
+        case 'tablet':
+          return Math.min(maxScroll, scrollLeft + (cardWidth + gap) * 2);
+        case 'mobile':
+          return Math.min(maxScroll, scrollLeft + (cardWidth + gap));
+        default:
+          return maxScroll;
+      }
     }
   };
 
-  // Scroll to end
-  const scrollToEnd = () => {
+  // Scroll left
+  const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      const { scrollWidth, clientWidth } = scrollContainerRef.current;
-      const maxScroll = scrollWidth - clientWidth;
+      const scrollAmount = getScrollAmount('left');
       scrollContainerRef.current.scrollTo({
-        left: maxScroll,
+        left: scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  // Scroll right
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = getScrollAmount('right');
+      scrollContainerRef.current.scrollTo({
+        left: scrollAmount,
         behavior: 'smooth',
       });
     }
@@ -85,9 +138,9 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
         {/* Left Arrow */}
         {showLeftArrow && (
           <button
-            onClick={scrollToStart}
+            onClick={scrollLeft}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-primary shadow-md rounded-full p-2 ml-2 hover:bg-secondary transition-colors"
-            aria-label="Scroll to start"
+            aria-label="Scroll left"
           >
             <svg
               className="w-6 h-6"
@@ -108,9 +161,9 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
         {/* Right Arrow */}
         {showRightArrow && (
           <button
-            onClick={scrollToEnd}
+            onClick={scrollRight}
             className="absolute btn-primary right-0 top-1/2 -translate-y-1/2 z-10 bg-primary shadow-md rounded-full p-2 mr-2 hover:bg-secondary transition-colors"
-            aria-label="Scroll to end"
+            aria-label="Scroll right"
           >
             <svg
               className="w-6 h-6"
