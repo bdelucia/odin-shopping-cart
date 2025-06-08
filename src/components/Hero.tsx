@@ -15,7 +15,8 @@ function Hero() {
             Hello there!
           </h1>
           <p className="mb-5 text-white">
-            Welcome to the Bob Shop. Bobbeh has wares if you have coin.
+            Welcome to the <span className="italic">Bob Shop.</span> Bobbeh has
+            wares if you have coin.
           </p>
           <button className="btn btn-primary">Get Started</button>
         </div>

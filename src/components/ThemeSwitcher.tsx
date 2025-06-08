@@ -8,8 +8,6 @@ function ThemeSwitcher() {
   const themes = [
     'cupcake',
     'bumblebee',
-    'emerald',
-    'corporate',
     'synthwave',
     'retro',
     'cyberpunk',
@@ -36,17 +34,28 @@ function ThemeSwitcher() {
   return (
     <div className="join join-vertical">
       {themes.map((theme) => (
-        <input
-          key={theme}
-          type="radio"
-          name="theme-buttons"
-          className="btn theme-controller join-item"
-          aria-label={theme.charAt(0).toUpperCase() + theme.slice(1)}
-          value={theme}
-          data-set-theme={theme}
-          checked={currentTheme === theme}
-          onChange={() => setCurrentTheme(theme)}
-        />
+        <button className="flex justify-center items-center gap-2 px-4">
+          <div
+            data-theme={theme}
+            className="bg-base-100 size-5 grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm"
+          >
+            <div className="bg-base-content size-1 rounded-full"></div>
+            <div className="bg-primary size-1 rounded-full"></div>
+            <div className="bg-secondary size-1 rounded-full"></div>
+            <div className="bg-accent size-1 rounded-full"></div>
+          </div>
+          <input
+            key={theme}
+            type="radio"
+            name="theme-buttons"
+            className="btn theme-controller join-item min-w-full"
+            aria-label={theme.charAt(0).toUpperCase() + theme.slice(1)}
+            value={theme}
+            data-set-theme={theme}
+            checked={currentTheme === theme}
+            onChange={() => setCurrentTheme(theme)}
+          />
+        </button>
       ))}
     </div>
   );
