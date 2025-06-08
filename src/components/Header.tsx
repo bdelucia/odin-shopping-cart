@@ -2,7 +2,7 @@ import '../index.css';
 import ThemeSwitcher from './ThemeSwitcher';
 function Header() {
   return (
-    <header className="navbar bg-primary text-primary-content">
+    <header className="navbar bg-primary text-primary-content absolute">
       <div className="navbar-start">
         <a className="btn btn-ghost normal-case text-xl">The Bob Shop</a>
       </div>
