@@ -22,8 +22,13 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="h-[100vh] bg-base-100 flex flex-col items-center justify-center">
-        <Hero />
+      <section className="h-[100vh] bg-secondary flex flex-col items-center justify-center">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center text-tertiary mb-12">
+            Recommended For You
+          </h2>
+          <HorizontalCardScroller />
+        </div>
       </section>
 
       <ScrollArrow />
