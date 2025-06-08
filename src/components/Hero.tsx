@@ -1,5 +1,4 @@
 import React from 'react';
-
 function Hero() {
   return (
     <div
@@ -12,14 +11,19 @@ function Hero() {
       <div className="hero-overlay"></div>
       <div className="hero-content text-neutral-content text-left">
         <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold text-white">Hello there</h1>
+          <h1 className="mb-5 text-7xl font-bold italic text-tertiary ">
+            Hello there
+          </h1>
           <p className="mb-5 text-white">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            Welcome to the Bob Shop. Please browse my wares Lorem, ipsum dolor
+            sit amet consectetur adipisicing elit. Dolorum illum, dignissimos
+            perferendis nam neque tempore accusantium officia tempora sit
+            doloribus magni quae ducimus nobis beatae. Repellat ducimus ipsam
+            dolorem. Repudiandae.
           </p>
           <button className="btn btn-teritary">Get Started</button>
         </div>
+        <div></div>
       </div>
     </div>
   );

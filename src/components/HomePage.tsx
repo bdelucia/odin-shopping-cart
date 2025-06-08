@@ -24,7 +24,7 @@ function HomePage() {
 
       <section className="h-[100vh] bg-secondary flex flex-col items-center justify-center">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center text-tertiary mb-12">
+          <h2 className="text-4xl font-bold text-center mb-12">
             Recommended For You
           </h2>
           <HorizontalCardScroller />
