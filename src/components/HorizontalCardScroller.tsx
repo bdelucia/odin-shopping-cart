@@ -3,7 +3,7 @@ import Card from './Card';
 import '../index.css';
 
 function HorizontalCardScroller() {
-  // Sample data - replace with your actual product data
+  // Sample data with 10 products
   const products = [
     { id: 1, title: 'Product 1', description: 'Description for product 1' },
     { id: 2, title: 'Product 2', description: 'Description for product 2' },
@@ -11,6 +11,10 @@ function HorizontalCardScroller() {
     { id: 4, title: 'Product 4', description: 'Description for product 4' },
     { id: 5, title: 'Product 5', description: 'Description for product 5' },
     { id: 6, title: 'Product 6', description: 'Description for product 6' },
+    { id: 7, title: 'Product 7', description: 'Description for product 7' },
+    { id: 8, title: 'Product 8', description: 'Description for product 8' },
+    { id: 9, title: 'Product 9', description: 'Description for product 9' },
+    { id: 10, title: 'Product 10', description: 'Description for product 10' },
   ];
 
   const scrollContainerRef = useRef(null);
@@ -31,16 +35,22 @@ function HorizontalCardScroller() {
     }
   };
 
-  // Scroll functions
-  const scrollLeft = () => {
+  // Scroll to beginning
+  const scrollToStart = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -450, behavior: 'smooth' });
+      scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
     }
   };
 
-  const scrollRight = () => {
+  // Scroll to end
+  const scrollToEnd = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 450, behavior: 'smooth' });
+      const { scrollWidth, clientWidth } = scrollContainerRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+      scrollContainerRef.current.scrollTo({
+        left: maxScroll,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -69,14 +79,14 @@ function HorizontalCardScroller() {
         {/* Left Arrow */}
         {showLeftArrow && (
           <button
-            onClick={scrollLeft}
+            onClick={scrollToStart}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-primary shadow-md rounded-full p-2 ml-2 hover:bg-secondary transition-colors"
-            aria-label="Scroll left"
+            aria-label="Scroll to start"
           >
             <svg
               className="w-6 h-6"
               fill="none"
-              stroke="black"
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
               <path
@@ -92,14 +102,14 @@ function HorizontalCardScroller() {
         {/* Right Arrow */}
         {showRightArrow && (
           <button
-            onClick={scrollRight}
+            onClick={scrollToEnd}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-primary shadow-md rounded-full p-2 mr-2 hover:bg-secondary transition-colors"
-            aria-label="Scroll right"
+            aria-label="Scroll to end"
           >
             <svg
               className="w-6 h-6"
               fill="none"
-              stroke="black"
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
               <path
@@ -115,7 +125,7 @@ function HorizontalCardScroller() {
         {/* Horizontal scrolling container */}
         <div
           ref={scrollContainerRef}
-          className="flex overflow-x-auto gap-4 px-4 pb-4 scrollbar-hide"
+          className="flex overflow-x-auto gap-4 px-4 pb-4 no-scrollbar scroll-smooth"
         >
           {products.map((product) => (
             <div key={product.id} className="flex-none">
@@ -125,21 +135,17 @@ function HorizontalCardScroller() {
         </div>
       </div>
 
-      {/* Custom scrollbar styling */}
+      {/* Hide scrollbar styling */}
       <style>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          height: 8px;
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
         }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: #f1f1f1;
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #888;
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #555;
+        
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
         }
       `}</style>
     </div>

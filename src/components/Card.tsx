@@ -11,7 +11,7 @@ function Card({
   price = '39.99',
 }) {
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="card bg-base-100 w-72 shadow-sm">
       <figure>
         <img src={imageUrl} alt={imageAlt} />
       </figure>
