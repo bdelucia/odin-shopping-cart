@@ -5,7 +5,7 @@ function Hamburger() {
   return (
     <label
       htmlFor="my-drawer"
-      className="btn btn-circle swap swap-rotate drawer-button"
+      className="btn btn-square swap swap-rotate drawer-button"
     >
       {/* this hidden checkbox controls the state */}
       <input type="checkbox" />

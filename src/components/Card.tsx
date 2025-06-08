@@ -21,7 +21,7 @@ function Card({
   price = '39.99',
 }: CardProps) {
   return (
-    <div className="card bg-base-100 w-72 shadow-sm">
+    <div className="card bg-base-100 w-72 shadow-sm z-0">
       <figure>
         <img src={imageUrl} alt={imageAlt} />
       </figure>
@@ -32,7 +32,7 @@ function Card({
         </h2>
         <p>{description}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary btn-soft" onClick={onButtonClick}>
+          <button className="btn btn-primary" onClick={onButtonClick}>
             {buttonText}
           </button>
         </div>

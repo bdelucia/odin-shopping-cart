@@ -9,21 +9,16 @@ function Hero() {
       }}
     >
       <div className="hero-overlay"></div>
-      <div className="hero-content text-neutral-content text-left">
+      <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
-          <h1 className="mb-5 text-7xl font-bold italic text-tertiary ">
-            Hello there
+          <h1 className="mb-5 text-7xl font-bold italic text-primary ">
+            Hello there!
           </h1>
           <p className="mb-5 text-white">
-            Welcome to the Bob Shop. Please browse my wares Lorem, ipsum dolor
-            sit amet consectetur adipisicing elit. Dolorum illum, dignissimos
-            perferendis nam neque tempore accusantium officia tempora sit
-            doloribus magni quae ducimus nobis beatae. Repellat ducimus ipsam
-            dolorem. Repudiandae.
+            Welcome to the Bob Shop. Bobbeh has wares if you have coin.
           </p>
-          <button className="btn btn-primary btn-soft">Get Started</button>
+          <button className="btn btn-primary">Get Started</button>
         </div>
-        <div></div>
       </div>
     </div>
   );

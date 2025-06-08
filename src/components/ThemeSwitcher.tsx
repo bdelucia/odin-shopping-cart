@@ -15,9 +15,7 @@ function ThemeSwitcher() {
     'cyberpunk',
     'garden',
     'forest',
-    'lofi',
     'pastel',
-    'fantasy',
     'luxury',
     'dracula',
     'cmyk',
@@ -26,13 +24,12 @@ function ThemeSwitcher() {
     'night',
     'coffee',
     'dim',
-    'nord',
     'sunset',
   ];
 
   useEffect(() => {
     themeChange(false);
-    const savedTheme = localStorage.getItem('theme') || 'cupcake';
+    const savedTheme = localStorage.getItem('theme') || 'luxury';
     setCurrentTheme(savedTheme);
   }, []);
 
