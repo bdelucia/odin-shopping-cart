@@ -37,12 +37,12 @@ function ThemeSwitcher() {
         <button className="flex justify-center items-center gap-2 px-4">
           <div
             data-theme={theme}
-            className="bg-base-100 size-5 grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm"
+            className="bg-base-100 size-7 grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm items-center"
           >
-            <div className="bg-base-content size-1 rounded-full"></div>
-            <div className="bg-primary size-1 rounded-full"></div>
-            <div className="bg-secondary size-1 rounded-full"></div>
-            <div className="bg-accent size-1 rounded-full"></div>
+            <div className="bg-base-content size-2 rounded-full"></div>
+            <div className="bg-primary size-2 rounded-full"></div>
+            <div className="bg-secondary size-2 rounded-full"></div>
+            <div className="bg-accent size-2 rounded-full"></div>
           </div>
           <input
             key={theme}

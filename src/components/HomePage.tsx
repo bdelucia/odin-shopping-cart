@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from './Header';
 import ScrollArrow from './ScrollArrow';
 import HorizontalCardScroller from './HorizontalCardScroller';

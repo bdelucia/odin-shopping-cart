@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Card from './Card';
 import '../index.css';
 
@@ -21,7 +21,7 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
     { id: 10, title: 'Product 10', description: 'Description for product 10' },
   ];
 
-  const scrollContainerRef = useRef(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
 
@@ -50,7 +50,7 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
   const getScrollAmount = (direction: 'left' | 'right') => {
     if (!scrollContainerRef.current) return 0;
 
-    const container = scrollContainerRef.current;
+    const container = scrollContainerRef.current as HTMLElement;
     const screenSize = getScreenSize();
     const { scrollLeft, scrollWidth, clientWidth } = container;
 

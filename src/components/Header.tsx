@@ -1,6 +1,6 @@
 import '../index.css';
-import ShoppingCartButton from './ShoppingCartButton';
-import Sidebar from './Sidebar';
+import Sidebar from './LeftSidebar';
+import RightSidebar from './RightSidebar';
 
 function Header() {
   return (
@@ -12,7 +12,7 @@ function Header() {
         <a className="btn normal-case text-xl">The Bob Shop</a>
       </div>
       <div className="navbar-end p-2">
-        <ShoppingCartButton />
+        <RightSidebar />
       </div>
     </header>
   );
