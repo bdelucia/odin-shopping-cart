@@ -21,7 +21,7 @@ function Hero() {
             doloribus magni quae ducimus nobis beatae. Repellat ducimus ipsam
             dolorem. Repudiandae.
           </p>
-          <button className="btn btn-teritary">Get Started</button>
+          <button className="btn btn-primary btn-soft">Get Started</button>
         </div>
         <div></div>
       </div>

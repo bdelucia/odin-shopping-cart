@@ -18,7 +18,7 @@ function HomePage() {
           <h2 className="text-4xl font-bold text-center mb-12">
             Featured Products
           </h2>
-          <HorizontalCardScroller />
+          <HorizontalCardScroller title="Featured Products" />
         </div>
       </section>
 
@@ -27,7 +27,7 @@ function HomePage() {
           <h2 className="text-4xl font-bold text-center mb-12">
             Recommended For You
           </h2>
-          <HorizontalCardScroller />
+          <HorizontalCardScroller title="Recommended For You" />
         </div>
       </section>
 

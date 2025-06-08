@@ -2,7 +2,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import Card from './Card';
 import '../index.css';
 
-function HorizontalCardScroller() {
+type HorizontalCardScrollerProps = {
+  title: string;
+};
+
+function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
   // Sample data with 10 products
   const products = [
     { id: 1, title: 'Product 1', description: 'Description for product 1' },
@@ -72,7 +76,7 @@ function HorizontalCardScroller() {
 
   return (
     <div className="w-full">
-      <h2 className="text-2xl font-bold mb-4 px-4">Featured Products</h2>
+      <h2 className="text-2xl font-bold mb-4 px-4">{title}</h2>
 
       {/* Container with scroll arrows */}
       <div className="relative">
@@ -134,20 +138,6 @@ function HorizontalCardScroller() {
           ))}
         </div>
       </div>
-
-      {/* Hide scrollbar styling */}
-      <style>{`
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        
-        /* Hide scrollbar for IE, Edge and Firefox */
-        .no-scrollbar {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
-        }
-      `}</style>
     </div>
   );
 }
