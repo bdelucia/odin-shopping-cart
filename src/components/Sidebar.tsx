@@ -3,7 +3,7 @@ import ThemeSwitcher from './ThemeSwitcher';
 
 function Hamburger() {
   return (
-    <label htmlFor="my-drawer" className="btn btn-square drawer-button">
+    <label htmlFor="my-drawer" className="btn btn-square drawer-button ml-2">
       <div className="swap swap-rotate">
         {/* hamburger icon */}
         <svg
