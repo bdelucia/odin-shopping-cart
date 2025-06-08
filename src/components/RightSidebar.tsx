@@ -43,7 +43,7 @@ function RightSidebar() {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+          <ul className="menu bg-base-200 text-base-content h-fit w-80 p-4 absolute top-[7vh] bottom-0">
             <li>
               <a>Sidebar Item 1</a>
             </li>
