@@ -1,4 +1,5 @@
 # The Bob Shop: An e-commerce website that uses React + TypeScript + Vite + DaisyUI
+![image](https://github.com/user-attachments/assets/6d8c0796-5456-4f40-bea3-0400645bc5be)
 
 The website is deployed on Vercel, the link can be found on this repo page.
 
