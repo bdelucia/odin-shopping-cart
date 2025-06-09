@@ -25,9 +25,8 @@
   }
 }
 
-/* For even smaller heights, use more columns
-@media (max-height: 400px) and (orientation: landscape) {
+@media (max-height: 360px) and (orientation: landscape) {
   .theme-container {
-    grid-template-columns: repeat(9, 1fr) !important;
+    grid-template-columns: repeat(6, 1fr) !important;
   }
-} */
+}
