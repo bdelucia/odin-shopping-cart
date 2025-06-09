@@ -1,12 +1,5 @@
-import React from 'react';
-import HorizontalCardScroller from './HorizontalCardScroller';
-
 function HomeCards() {
-  return (
-    <div>
-      <HorizontalCardScroller />
-    </div>
-  );
+  return <div></div>;
 }
 
 export default HomeCards;
