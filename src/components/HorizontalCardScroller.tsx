@@ -139,7 +139,7 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
         {showLeftArrow && (
           <button
             onClick={scrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-primary shadow-md rounded-full p-2 ml-2 hover:bg-secondary transition-colors"
+            className="absolute text-primary-content left-0 top-1/2 -translate-y-1/2 z-10 bg-primary shadow-md rounded-full p-2 ml-2 hover:bg-secondary transition-colors"
             aria-label="Scroll left"
           >
             <svg
@@ -162,7 +162,7 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
         {showRightArrow && (
           <button
             onClick={scrollRight}
-            className="absolute btn-primary right-0 top-1/2 -translate-y-1/2 z-10 bg-primary shadow-md rounded-full p-2 mr-2 hover:bg-secondary transition-colors"
+            className="absolute text-primary-content right-0 top-1/2 -translate-y-1/2 z-10 bg-primary shadow-md rounded-full p-2 mr-2 hover:bg-secondary transition-colors"
             aria-label="Scroll right"
           >
             <svg
