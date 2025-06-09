@@ -1,5 +1,5 @@
-/* Mobile landscape mode - max height 500px and landscape orientation */
-@media (max-height: 500px) and (orientation: landscape) {
+/* Mobile landscape mode - max height 740px and landscape orientation */
+@media (max-height: 740px) and (orientation: landscape) {
   .theme-container {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
@@ -25,9 +25,9 @@
   }
 }
 
-/* For even smaller heights, use more columns */
+/* For even smaller heights, use more columns
 @media (max-height: 400px) and (orientation: landscape) {
   .theme-container {
     grid-template-columns: repeat(9, 1fr) !important;
   }
-}
+} */
