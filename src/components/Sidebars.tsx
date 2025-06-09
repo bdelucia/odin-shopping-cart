@@ -57,7 +57,7 @@ export function LeftSidebar() {
           aria-label="close sidebar"
           className="drawer-overlay !z-[998]"
         ></label>
-        <ul className="menu bg-base-200 text-base-content w-52 sm:w-64 p-2 sm:p-4 absolute top-[7vh] bottom-0 !z-[999]">
+        <ul className="menu bg-base-200 text-base-content w-64 h-full p-4 max-w-[50vw] absolute !z-[999] flex justify-center align-middle">
           <div className="flex justify-center">
             <div className="badge badge-accent">Themes</div>
           </div>
@@ -84,7 +84,7 @@ export function RightSidebar() {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 text-base-content w-72 p-4 absolute top-[7vh] bottom-0 !z-[999]">
+        <ul className="menu bg-base-200 text-base-content w-72 h-full p-4 max-w-[50vw] absolute !z-[999] flex justify-start">
           {/* Sidebar content here */}
           <li>
             <a>Sidebar Item 1</a>
