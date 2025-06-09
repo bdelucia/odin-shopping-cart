@@ -57,7 +57,7 @@ export function LeftSidebar() {
           aria-label="close sidebar"
           className="drawer-overlay !z-[998]"
         ></label>
-        <ul className="menu bg-base-200 text-base-content w-64 p-4 absolute top-[7vh] bottom-0 !z-[999]">
+        <ul className="menu bg-base-200 text-base-content w-52 sm:w-64 p-2 sm:p-4 absolute top-[7vh] bottom-0 !z-[999]">
           <div className="flex justify-center">
             <div className="badge badge-accent">Themes</div>
           </div>
