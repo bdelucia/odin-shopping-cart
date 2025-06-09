@@ -17,7 +17,7 @@ function Hero() {
             Welcome to the <span className="italic">Bob Shop.</span> Bobbeh has
             wares if you have coin.
           </p>
-          <button className="btn btn-primary">Browse Wares</button>
+          <button className="btn btn-accent">Browse Wares</button>
         </div>
       </div>
     </div>

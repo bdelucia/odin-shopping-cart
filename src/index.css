@@ -6,7 +6,7 @@
 }
 @plugin "daisyui/theme" {
   name: 'bobbeh';
-  default: false;
+  default: true;
   prefersdark: true;
   color-scheme: 'dark';
   --color-base-100: oklch(28.822% 0.022 277.508);
