@@ -5,7 +5,9 @@ function ShoppingCartButton({ count = 0 }) {
   return (
     <label htmlFor="my-drawer-4" className="btn btn-square drawer-button ml-2">
       <div className="indicator">
-        <span className="indicator-item badge badge-secondary">{count}</span>
+        <span className="indicator-item size-5 badge badge-accent">
+          {count}
+        </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -57,9 +59,9 @@ export function LeftSidebar() {
         ></label>
         <ul className="menu bg-base-200 text-base-content w-64 p-4 absolute top-[7vh] bottom-0 !z-[999]">
           <div className="flex justify-center">
-            <div className="badge badge-primary">Themes</div>
+            <div className="badge badge-accent">Themes</div>
           </div>
-          <div className="divider divider-primary gap-0 m-0 p-0"></div>
+          <div className="divider divider-accent gap-0 m-0 p-0"></div>
           <div id="theme-switcher" className="flex justify-center">
             <ThemeSwitcher />
           </div>

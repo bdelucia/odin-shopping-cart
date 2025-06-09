@@ -6,6 +6,7 @@ function ThemeSwitcher() {
   const [currentTheme, setCurrentTheme] = useState('');
 
   const themes = [
+    'bobbeh',
     'cupcake',
     'bumblebee',
     'synthwave',
