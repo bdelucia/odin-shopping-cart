@@ -37,26 +37,48 @@ function QuantitySelector({
   return (
     <div className="join">
       <button
-        className="join-item btn btn-sm btn-ghost btn-square"
+        className="join-item btn btn-primary btn-soft border-primary btn-sm btn-ghost btn-square"
         onClick={handleDecrease}
         disabled={quantity <= min}
       >
-        −
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-4 h-4"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
+        </svg>
       </button>
       <input
         type="number"
-        className="join-item input input-bordered input-sm w-16 text-center"
+        className="join-item  input input-primary input-sm w-16 text-center font-semibold text-base"
         value={quantity}
         onChange={handleInputChange}
         min={min}
         max={max}
       />
       <button
-        className="join-item btn btn-sm btn-ghost btn-square"
+        className="join-item btn btn-primary btn-soft border-primary btn-sm btn-ghost btn-square"
         onClick={handleIncrease}
         disabled={quantity >= max}
       >
-        +
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-4 h-4"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 4.5v15m7.5-7.5h-15"
+          />
+        </svg>
       </button>
     </div>
   );
