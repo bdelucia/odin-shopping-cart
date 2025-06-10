@@ -52,7 +52,7 @@ function ThemeSwitcher() {
           <input
             type="radio"
             name="theme-buttons"
-            className="btn btn-primary landscape-input sm:btn-md theme-controller join-item min-w-full h-auto py-1 sm:py-2"
+            className="btn btn-outline landscape-input sm:btn-md theme-controller join-item min-w-full h-auto py-1 sm:py-2"
             aria-label={theme.charAt(0).toUpperCase() + theme.slice(1)}
             value={theme}
             data-set-theme={theme}
