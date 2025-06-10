@@ -53,7 +53,7 @@ function QuantitySelector({
       </button>
       <input
         type="number"
-        className="join-item input input-primary input-xs sm:input-xs sm:w-12 md:input-xs lg:input-sm md:w-14 text-center font-semibold"
+        className="join-item input input-primary input-xs sm:input-xs sm:w-12 md:input-xs lg:input-sm md:w-14 text-center font-semibold lg:text-lg"
         value={value}
         onChange={handleInputChange}
         min={min}
