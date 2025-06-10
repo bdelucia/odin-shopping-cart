@@ -88,7 +88,7 @@ function ScrollArrow() {
   return (
     <>
       {isUpVisible && (
-        <div className="fixed top-[10vh] left-1/2 transform -translate-x-1/2 z-40">
+        <div className="fixed top-[10dvh] left-1/2 transform -translate-x-1/2 z-40">
           <button
             onClick={scrollToPreviousSection}
             className="btn btn-circle btn-primary shadow-lg hover:shadow-xl transition-all duration-300"

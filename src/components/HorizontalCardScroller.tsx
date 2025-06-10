@@ -129,7 +129,7 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
 
   return (
     <div className="w-full">
-      <h2 className="text-2xl btn btn-accent font-bold mb-4 px-4 ml-4">
+      <h2 className="text-lg sm:text-xl md:text-2xl lg:text-2xl btn btn-accent font-bold mb-4 px-4 ml-4">
         {title}
       </h2>
 

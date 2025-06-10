@@ -7,13 +7,13 @@ function HomePage() {
     <>
       <Hero />
 
-      <section className="h-[100vh] bg-base-200 flex flex-col justify-center py-16">
+      <section className="min-h-[100dvh] bg-base-200 flex flex-col justify-center py-8 sm:py-16">
         <div className="container mx-auto">
           <HorizontalCardScroller title="Featured Products" />
         </div>
       </section>
 
-      <section className="h-[100vh] bg-secondary flex flex-col items-center justify-center">
+      <section className="min-h-[100dvh] bg-secondary flex flex-col items-center justify-center py-8 sm:py-16">
         <div className="container mx-auto">
           <HorizontalCardScroller title="Recommended For You" />
         </div>
