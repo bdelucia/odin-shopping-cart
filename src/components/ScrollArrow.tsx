@@ -18,7 +18,7 @@ function ScrollArrow() {
     const viewportHeight = window.innerHeight;
     const totalHeight = document.documentElement.scrollHeight;
     //const totalSections = getTotalSections();
-    const totalSections = 3;
+    const totalSections = 4;
     const nextSection = currentSection + 1;
 
     // If going to last section and it's shorter than viewport, scroll to bottom
