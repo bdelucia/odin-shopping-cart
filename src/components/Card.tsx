@@ -35,7 +35,7 @@ function QuantitySelector({
   return (
     <div className="join">
       <button
-        className="join-item btn btn-primary btn-soft border-primary btn-sm btn-ghost btn-square"
+        className="join-item btn btn-primary btn-soft border-primary btn-xs sm:btn-xs md:btn-xs lg:btn-sm btn-ghost btn-square"
         onClick={handleDecrease}
         disabled={value <= min}
       >
@@ -53,14 +53,14 @@ function QuantitySelector({
       </button>
       <input
         type="number"
-        className="join-item input input-primary input-sm w-16 text-center font-semibold text-base"
-        value={value} // Use value prop directly
+        className="join-item input input-primary input-xs sm:input-xs sm:w-12 md:input-xs lg:input-sm md:w-14 text-center font-semibold"
+        value={value}
         onChange={handleInputChange}
         min={min}
         max={max}
       />
       <button
-        className="join-item btn btn-primary btn-soft border-primary btn-sm btn-ghost btn-square"
+        className="join-item btn btn-primary btn-soft border-primary btn-xs md:btn-xs lg:btn-sm sm:btn-xs btn-ghost btn-square"
         onClick={handleIncrease}
         disabled={value >= max}
       >
@@ -130,7 +130,7 @@ function Card({
           {description}
         </p>
 
-        <div className="card-actions justify-between items-center mt-2">
+        <div className="card-actions flex-nowrap justify-between items-center mt-2 ">
           <QuantitySelector
             value={quantity}
             onChange={(value) => setQuantity(value)}
@@ -138,7 +138,7 @@ function Card({
             max={10}
           />
           <button
-            className="btn btn-primary btn-xs sm:btn-sm lg:btn-md"
+            className="btn btn-primary btn-xs sm:btn-xs lg:btn-sm"
             onClick={handleAddToCart}
             disabled={quantity === 0}
           >
