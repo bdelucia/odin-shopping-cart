@@ -9,7 +9,7 @@ function Header() {
   };
 
   return (
-    <header className="navbar bg-primary text-primary-content fixed top-0 left-0 right-0 h-[7vh] z-[999]">
+    <header className="navbar bg-primary text-primary-content fixed top-0 left-0 right-0 h-[7dvh] z-[999]">
       <div className="navbar-start">
         <LeftSidebar />
       </div>
