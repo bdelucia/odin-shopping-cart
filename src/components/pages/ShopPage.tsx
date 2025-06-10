@@ -1,7 +1,11 @@
 import Card from '../Card';
 
 function ShopPage() {
-  return <div>ShopPage</div>;
+  return (
+    <>
+      <Card />
+    </>
+  );
 }
 
 export default ShopPage;

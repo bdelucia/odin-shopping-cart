@@ -17,7 +17,8 @@ function ScrollArrow() {
   const scrollToNextSection = () => {
     const viewportHeight = window.innerHeight;
     const totalHeight = document.documentElement.scrollHeight;
-    const totalSections = getTotalSections();
+    //const totalSections = getTotalSections();
+    const totalSections = 3;
     const nextSection = currentSection + 1;
 
     // If going to last section and it's shorter than viewport, scroll to bottom
@@ -64,24 +65,20 @@ function ScrollArrow() {
 
       let currentSectionNum;
       if (isAtBottom) {
-        // If at bottom, we're in the last section
         currentSectionNum = totalSections - 1;
       } else {
-        // Otherwise calculate normally
         currentSectionNum = Math.round(scrolled / viewportHeight);
       }
 
       setCurrentSection(currentSectionNum);
 
-      // Show down arrow if not at bottom
       setIsDownVisible(!isAtBottom);
 
-      // Show up arrow if has scrolled down and not at top
       setIsUpVisible(hasScrolledDown && currentSectionNum > 0);
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial state
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [hasScrolledDown]);
@@ -90,7 +87,6 @@ function ScrollArrow() {
 
   return (
     <>
-      {/* Up Arrow - positioned near top */}
       {isUpVisible && (
         <div className="fixed top-[10vh] left-1/2 transform -translate-x-1/2 z-40">
           <button
@@ -115,7 +111,6 @@ function ScrollArrow() {
         </div>
       )}
 
-      {/* Down Arrow - positioned at bottom */}
       {isDownVisible && (
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40">
           <button
