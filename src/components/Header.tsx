@@ -1,4 +1,5 @@
-import { LeftSidebar, RightSidebar } from './Sidebars';
+import { Sidebar } from './Sidebar';
+import ShoppingCartButton from './ShoppingCartButton';
 import { useNavigate } from 'react-router-dom';
 
 function Header() {
@@ -11,7 +12,7 @@ function Header() {
   return (
     <header className="navbar bg-primary text-primary-content fixed top-0 left-0 right-0 h-[7dvh] z-[999]">
       <div className="navbar-start">
-        <LeftSidebar />
+        <Sidebar />
       </div>
       <div className="navbar-center">
         <a className="btn normal-case text-xl" onClick={handleClick}>
@@ -19,7 +20,7 @@ function Header() {
         </a>
       </div>
       <div className="navbar-end p-2">
-        <RightSidebar />
+        <ShoppingCartButton />
       </div>
     </header>
   );
