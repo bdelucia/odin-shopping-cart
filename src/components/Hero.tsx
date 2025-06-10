@@ -15,14 +15,17 @@ function Hero() {
       <div className="hero-overlay"></div>
       <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
-          <h1 className="mb-5 text-7xl font-bold italic text-primary ">
+          <h1 className="mb-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold italic text-primary">
             Hello there!
           </h1>
-          <p className="mb-5 text-white">
+          <p className="mb-5 text-white text-sm sm:text-base lg:text-lg">
             Welcome to the <span className="italic">Bob Shop.</span> Bobbeh has
             wares if you have coin.
           </p>
-          <button className="btn btn-accent" onClick={handleClick}>
+          <button
+            className="btn btn-accent btn-sm sm:btn-md lg:btn-lg"
+            onClick={handleClick}
+          >
             Browse Wares
           </button>
         </div>
