@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import HeroImage from '../assets/hero.webp';
+
 function Hero() {
   const navigate = useNavigate();
   const handleClick = () => {
@@ -8,8 +10,7 @@ function Hero() {
     <div
       className="hero min-h-screen"
       style={{
-        backgroundImage:
-          'url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)',
+        backgroundImage: `url(${HeroImage})`,
       }}
     >
       <div className="hero-overlay"></div>
