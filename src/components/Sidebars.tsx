@@ -1,12 +1,15 @@
+import { useCart } from './CartContext';
 import ThemeSwitcher from './ThemeSwitcher';
 
 // icon with indicator for rightsidebar
-function ShoppingCartButton({ count = 0 }) {
+function ShoppingCartButton() {
+  const { cartQuantity } = useCart();
+
   return (
     <label htmlFor="my-drawer-4" className="btn btn-square drawer-button ml-2">
       <div className="indicator">
         <span className="indicator-item size-5 badge badge-accent">
-          {count}
+          {cartQuantity}
         </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"

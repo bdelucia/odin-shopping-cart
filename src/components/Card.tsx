@@ -1,36 +1,34 @@
 import { useState } from 'react';
+import { useCart } from './CartContext';
 
 interface QuantitySelectorProps {
-  initialValue?: number;
+  value: number; // Changed from initialValue to value
   min?: number;
   max?: number;
   onChange?: (value: number) => void;
 }
 
 function QuantitySelector({
-  initialValue = 1,
+  value, // Use value directly instead of internal state
   min = 1,
   max = 99,
   onChange,
 }: QuantitySelectorProps) {
-  const [quantity, setQuantity] = useState<number>(initialValue);
+  // Remove useState - no internal state needed
 
   const handleDecrease = (): void => {
-    const newValue = Math.max(min, quantity - 1);
-    setQuantity(newValue);
+    const newValue = Math.max(min, value - 1);
     onChange?.(newValue);
   };
 
   const handleIncrease = (): void => {
-    const newValue = Math.min(max, quantity + 1);
-    setQuantity(newValue);
+    const newValue = Math.min(max, value + 1);
     onChange?.(newValue);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const value = parseInt(e.target.value) || min;
-    const newValue = Math.max(min, Math.min(max, value));
-    setQuantity(newValue);
+    const inputValue = parseInt(e.target.value) || min;
+    const newValue = Math.max(min, Math.min(max, inputValue));
     onChange?.(newValue);
   };
 
@@ -39,8 +37,9 @@ function QuantitySelector({
       <button
         className="join-item btn btn-primary btn-soft border-primary btn-sm btn-ghost btn-square"
         onClick={handleDecrease}
-        disabled={quantity <= min}
+        disabled={value <= min}
       >
+        {/* minus icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -54,8 +53,8 @@ function QuantitySelector({
       </button>
       <input
         type="number"
-        className="join-item  input input-primary input-sm w-16 text-center font-semibold text-base"
-        value={quantity}
+        className="join-item input input-primary input-sm w-16 text-center font-semibold text-base"
+        value={value} // Use value prop directly
         onChange={handleInputChange}
         min={min}
         max={max}
@@ -63,8 +62,9 @@ function QuantitySelector({
       <button
         className="join-item btn btn-primary btn-soft border-primary btn-sm btn-ghost btn-square"
         onClick={handleIncrease}
-        disabled={quantity >= max}
+        disabled={value >= max}
       >
+        {/* plus icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -90,7 +90,6 @@ type CardProps = {
   imageUrl?: string;
   imageAlt?: string;
   buttonText?: string;
-  onButtonClick?: () => void;
   price?: string;
 };
 
@@ -99,14 +98,14 @@ function Card({
   description = 'A card component has a figure, a body part, and inside body there are title and actions parts',
   imageUrl = 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp',
   imageAlt = 'Product Image',
-  buttonText = 'Add to Cart',
-  onButtonClick = () => {},
   price = '39.99',
 }: CardProps) {
-  const [quantity, setQuantity] = useState(0); // Changed to 1 as default
+  const [quantity, setQuantity] = useState(0);
+  const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    onButtonClick(quantity); // Pass quantity to the onClick handler
+    addToCart(quantity);
+    setQuantity(0);
   };
 
   return (
@@ -133,7 +132,7 @@ function Card({
 
         <div className="card-actions justify-between items-center mt-2">
           <QuantitySelector
-            initialValue={quantity}
+            value={quantity}
             onChange={(value) => setQuantity(value)}
             min={0}
             max={10}
@@ -143,7 +142,7 @@ function Card({
             onClick={handleAddToCart}
             disabled={quantity === 0}
           >
-            {buttonText}
+            Add to Cart
           </button>
         </div>
       </div>
