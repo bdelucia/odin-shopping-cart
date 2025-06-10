@@ -1,9 +1,15 @@
-import HomePage from './components/HomePage';
+import { Outlet } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <>
-      <HomePage />
+      <Header />
+      <main className="min-h-screen">
+        <Outlet />
+      </main>
+      <Footer />
     </>
   );
 }

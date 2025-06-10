@@ -1,15 +1,10 @@
-import Header from './Header';
-import ScrollArrow from './ScrollArrow';
-import HorizontalCardScroller from './HorizontalCardScroller';
-import Hero from './Hero';
-import '../index.css';
-import Footer from './Footer';
+import ScrollArrow from '../ScrollArrow';
+import HorizontalCardScroller from '../HorizontalCardScroller';
+import Hero from '../Hero';
 
 function HomePage() {
   return (
-    <div className="min-h-screen">
-      <Header />
-
+    <>
       <Hero />
 
       <section className="h-[100vh] bg-base-200 flex flex-col justify-center py-16">
@@ -25,9 +20,7 @@ function HomePage() {
       </section>
 
       <ScrollArrow />
-
-      <Footer />
-    </div>
+    </>
   );
 }
 

@@ -1,4 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 function Hero() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/shop');
+  };
   return (
     <div
       className="hero min-h-screen"
@@ -17,7 +22,9 @@ function Hero() {
             Welcome to the <span className="italic">Bob Shop.</span> Bobbeh has
             wares if you have coin.
           </p>
-          <button className="btn btn-accent">Browse Wares</button>
+          <button className="btn btn-accent" onClick={handleClick}>
+            Browse Wares
+          </button>
         </div>
       </div>
     </div>
