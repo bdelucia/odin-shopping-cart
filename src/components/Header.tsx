@@ -1,7 +1,6 @@
 import { Sidebar } from './Sidebar';
 import ShoppingCartButton from './ShoppingCartButton';
 import ShopButton from './ShopButton';
-import SearchBar from './SearchBar';
 import { useNavigate } from 'react-router-dom';
 
 function Header() {
@@ -23,9 +22,7 @@ function Header() {
         </a>
         <ShoppingCartButton />
       </div>
-      <div className="navbar-end p-2">
-        <SearchBar />
-      </div>
+      <div className="navbar-end p-2"></div>
     </header>
   );
 }

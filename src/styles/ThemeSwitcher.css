@@ -1,4 +1,4 @@
-@media (max-height: 740px) and (orientation: landscape) {
+@media (max-height: 755px) and (orientation: landscape) {
   .theme-container {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
@@ -27,5 +27,25 @@
 @media (max-height: 360px) and (orientation: landscape) {
   .theme-container {
     grid-template-columns: repeat(6, 1fr) !important;
+  }
+}
+
+@media (max-height: 310px) and (orientation: landscape) {
+  .theme-container {
+    grid-template-columns: repeat(9, 1fr) !important;
+  }
+}
+
+@media (max-height: 240px) and (orientation: landscape) {
+  .theme-container {
+    width: 80vw;
+  }
+
+  .theme-button {
+    width: 50% !important;
+  }
+
+  .landscape-input {
+    min-height: 1rem !important;
   }
 }
