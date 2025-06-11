@@ -127,7 +127,7 @@ function ScrollArrow() {
         );
       }
     };
-  }, [hasScrolledDown]);
+  });
 
   const totalSections = getTotalSections();
 
@@ -186,7 +186,7 @@ function ScrollArrow() {
 
           {/* Section indicator dots */}
           <div className="flex justify-center mt-2 space-x-1">
-            {Array.from({ length: Math.min(4, totalSections) }, (_, index) => (
+            {Array.from({ length: totalSections }, (_, index) => (
               <div
                 key={index}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${

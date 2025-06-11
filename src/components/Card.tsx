@@ -1,21 +1,20 @@
 import { useState } from 'react';
 import { useCart } from './CartContext';
+import '../styles/QuantitySelector.css';
 
 interface QuantitySelectorProps {
-  value: number; // Changed from initialValue to value
+  value: number;
   min?: number;
   max?: number;
   onChange?: (value: number) => void;
 }
 
 function QuantitySelector({
-  value, // Use value directly instead of internal state
+  value,
   min = 1,
   max = 99,
   onChange,
 }: QuantitySelectorProps) {
-  // Remove useState - no internal state needed
-
   const handleDecrease = (): void => {
     const newValue = Math.max(min, value - 1);
     onChange?.(newValue);
@@ -53,7 +52,7 @@ function QuantitySelector({
       </button>
       <input
         type="number"
-        className="join-item input input-primary input-xs sm:input-xs sm:w-12 md:input-xs lg:input-sm md:w-14 text-center font-semibold lg:text-lg"
+        className="join-item no-spinner input input-primary input-xs sm:input-xs sm:w-12 md:input-xs lg:input-sm md:w-14 text-center font-semibold lg:text-lg"
         value={value}
         onChange={handleInputChange}
         min={min}
