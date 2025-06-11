@@ -108,12 +108,12 @@ function Card({
   };
 
   return (
-    <div className="flex flex-col bg-base-100 w-64 sm:w-64 lg:w-72 shadow-sm z-0 rounded-2xl border-3 border-base-content box-border hover:border-3 hover:border-accent transition-colors duration-300">
-      <figure className="h-32 sm:h-40 lg:h-48 bg-white overflow-hidden rounded-t-xl">
+    <div className="flex flex-col bg-base-100 shadow-sm z-0 rounded-2xl border-3 border-base-content box-border hover:border-3 hover:border-accent transition-colors duration-300">
+      <figure className="bg-white overflow-hidden rounded-t-xl">
         <img
           src={imageUrl}
           alt={imageAlt}
-          className="w-full max-h-48 object-contain p-4 rounded-2xl "
+          className="w-full h-48 object-contain p-4 rounded-2xl "
         />
       </figure>
       <div className="card-body p-3 sm:p-4 lg:p-6">

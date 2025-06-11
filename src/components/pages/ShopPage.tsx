@@ -45,8 +45,8 @@ function ShopPage() {
   // show skeleton cards when loading :) this is awesome
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen min-w-screen bg-base-content pt-[7dvh]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+      <div className="min-h-screen bg-base-content pt-[7vh]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 custom:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
           {[...Array(PRODUCTS_TO_FETCH)].map((_, index) => (
             <CardSkeleton key={index} />
           ))}
@@ -79,8 +79,8 @@ function ShopPage() {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen min-w-screen bg-base-content pt-[7dvh]">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+    <div className="min-h-screen bg-base-content pt-[7vh]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 custom:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
         {products.map((product) => (
           <Card
             key={product.id}
