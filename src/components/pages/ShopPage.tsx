@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Card from '../Card';
+import ShopCard from '../ShopCard';
 import CardSkeleton from '../CardSkeleton';
 
 interface Product {
@@ -82,7 +82,7 @@ function ShopPage() {
     <div className="min-h-screen bg-base-content pt-[7vh]">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 custom:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
         {products.map((product) => (
-          <Card
+          <ShopCard
             key={product.id}
             title={product.title}
             description={product.description}
