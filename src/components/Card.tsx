@@ -13,7 +13,6 @@ type CardProps = {
 
 function Card({
   title = 'Card Title',
-  description = 'A card component has a figure, a body part, and inside body there are title and actions parts',
   imageUrl = 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp',
   imageAlt = 'Product Image',
   price = '39.99',
@@ -32,16 +31,14 @@ function Card({
         <img
           src={imageUrl}
           alt={imageAlt}
-          className="w-full max-h-48 object-contain p-4 rounded-2xl "
+          className="w-full h-full object-cover rounded-t-2xl "
         />
       </figure>
       <div className="card-body p-3 sm:p-4 lg:p-6">
         <h2 className="card-title text-sm sm:text-base lg:text-lg line-clamp-1">
           {title}
         </h2>
-        <p className="text-xs sm:text-sm line-clamp-2 sm:line-clamp-3">
-          {description}
-        </p>
+        <p className="text-xs sm:text-sm line-clamp-2 sm:line-clamp-3"></p>
         {price && (
           <div className="badge badge-secondary badge-sm sm:badge-md">
             ${price}
