@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useCart } from './CartContext';
-import QuantitySelector from './cards/QuantitySelector';
+import { useCart } from '../CartContext';
+import QuantitySelector from './QuantitySelector';
 
 type CardProps = {
   title?: string;
@@ -32,14 +32,14 @@ function ShopCard({
         <img
           src={imageUrl}
           alt={imageAlt}
-          className="w-full h-48 object-contain p-4 rounded-2xl "
+          className="w-full h-48 object-contain p-4 rounded-2xl"
         />
       </figure>
-      <div className="card-body p-3 sm:p-4 lg:p-6">
+      <div className="card-body p-3 sm:p-4 lg:p-6 flex flex-col flex-grow">
         <h2 className="card-title text-sm sm:text-base lg:text-lg line-clamp-1">
           {title}
         </h2>
-        <p className="text-xs sm:text-sm line-clamp-2 sm:line-clamp-3">
+        <p className="text-xs sm:text-sm line-clamp-2 sm:line-clamp-3 flex-grow">
           {description}
         </p>
         {price && (
@@ -47,7 +47,7 @@ function ShopCard({
             ${price}
           </div>
         )}
-        <div className="card-actions flex-nowrap justify-between items-center mt-2 ">
+        <div className="card-actions flex-nowrap justify-between items-center mt-2">
           <QuantitySelector
             value={quantity}
             onChange={(value) => setQuantity(value)}

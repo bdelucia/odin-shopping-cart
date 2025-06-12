@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import ShopCard from '../ShopCard';
-import { ShopCardSkeleton } from '../cards/CardSkeleton';
+import ShopCard from '../cards/ShopCard';
+import { ShopCardSkeleton } from '../cards/ShopCardSkeleton';
+import { motion } from 'framer-motion';
 
 interface Product {
   id: number;
@@ -81,15 +82,25 @@ function ShopPage() {
   return (
     <div className="min-h-screen bg-base-content pt-[7vh]">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 custom:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
-        {products.map((product) => (
-          <ShopCard
+        {products.map((product, index) => (
+          <motion.div
             key={product.id}
-            title={product.title}
-            description={product.description}
-            imageUrl={product.image}
-            imageAlt={product.title}
-            price={product.price.toFixed(2)}
-          />
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.4,
+              delay: index * 0.1,
+              ease: 'easeOut',
+            }}
+          >
+            <ShopCard
+              title={product.title}
+              description={product.description}
+              imageUrl={product.image}
+              imageAlt={product.title}
+              price={product.price.toFixed(2)}
+            />
+          </motion.div>
         ))}
       </div>
     </div>
