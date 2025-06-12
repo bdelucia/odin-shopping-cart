@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useCart } from './CartContext';
-import QuantitySelector from './QuantitySelector';
+import QuantitySelector from './cards/QuantitySelector';
 
 type CardProps = {
   title?: string;

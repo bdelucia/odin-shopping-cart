@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ShopCard from '../ShopCard';
-import CardSkeleton from '../CardSkeleton';
+import { ShopCardSkeleton } from '../cards/CardSkeleton';
 
 interface Product {
   id: number;
@@ -48,7 +48,7 @@ function ShopPage() {
       <div className="min-h-screen bg-base-content pt-[7vh]">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 custom:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
           {[...Array(PRODUCTS_TO_FETCH)].map((_, index) => (
-            <CardSkeleton key={index} />
+            <ShopCardSkeleton key={index} />
           ))}
         </div>
       </div>

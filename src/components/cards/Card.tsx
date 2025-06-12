@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useCart } from './CartContext';
+import { useCart } from '../CartContext';
 import QuantitySelector from './QuantitySelector';
 
 type CardProps = {
@@ -31,7 +31,7 @@ function Card({
         <img
           src={imageUrl}
           alt={imageAlt}
-          className="w-full h-full object-cover rounded-t-2xl "
+          className="w-full h-48 object-contain p-4 rounded-2xl  "
         />
       </figure>
       <div className="card-body p-3 sm:p-4 lg:p-6">
