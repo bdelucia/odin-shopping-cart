@@ -1,7 +1,7 @@
 import '../index.css';
 import { useEffect, useState } from 'react';
 import { themeChange } from 'theme-change';
-import '../styles/ThemeSwitcher.css';
+import './styles/ThemeSwitcher.css';
 
 function ThemeSwitcher() {
   const [currentTheme, setCurrentTheme] = useState('');

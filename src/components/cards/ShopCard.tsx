@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useCart } from '../CartContext';
+import { useCart } from '../context/CartContext';
 import QuantitySelector from './QuantitySelector';
 
 type CardProps = {

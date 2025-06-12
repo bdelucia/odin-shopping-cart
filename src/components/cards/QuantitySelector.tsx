@@ -1,4 +1,4 @@
-import '../../styles/QuantitySelector.css';
+import '../styles/QuantitySelector.css';
 
 interface QuantitySelectorProps {
   value: number;

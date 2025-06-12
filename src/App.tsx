@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { CartProvider } from './components/CartContext';
+import { CartProvider } from './components/context/CartContext';
 function App() {
   return (
     <CartProvider>

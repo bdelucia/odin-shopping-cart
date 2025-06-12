@@ -1,155 +1,21 @@
-import { useRef, useState, useEffect } from 'react';
 import Card from './cards/Card';
 import { HomeCardSkeleton } from './cards/CardSkeleton';
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
+import useFetchProducts from './hooks/useFetchProducts';
+import useScrollArrows from './hooks/useScrollArrows';
 
 type HorizontalCardScrollerProps = {
   title: string;
 };
 
 function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const PRODUCTS_TO_FETCH = 10;
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch(
-          `https://fakestoreapi.com/products?limit=${PRODUCTS_TO_FETCH}`
-        );
-        if (!response.ok) {
-          throw new Error('Failed to fetch products');
-        }
-        const data = await response.json();
-        setProducts(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [showLeftArrow, setShowLeftArrow] = useState(false);
-  const [showRightArrow, setShowRightArrow] = useState(true);
-
-  // Get current screen size
-  const getScreenSize = () => {
-    if (window.innerWidth >= 1024) return 'desktop'; // lg and up
-    if (window.innerWidth >= 768) return 'tablet'; // md
-    return 'mobile'; // sm and below
-  };
-
-  // Check scroll position and update arrow visibility
-  const checkScrollPosition = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } =
-        scrollContainerRef.current;
-
-      // Show left arrow if not at the beginning
-      setShowLeftArrow(scrollLeft > 0);
-
-      // Show right arrow if not at the end
-      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1);
-    }
-  };
-
-  // Calculate scroll amount based on screen size
-  const getScrollAmount = (direction: 'left' | 'right') => {
-    if (!scrollContainerRef.current) return 0;
-
-    const container = scrollContainerRef.current as HTMLElement;
-    const screenSize = getScreenSize();
-    const { scrollLeft, scrollWidth, clientWidth } = container;
-
-    // Get card width (assuming all cards are same width)
-    const firstCard = container.querySelector('.flex-none');
-    if (!firstCard) return 0;
-
-    const cardWidth = firstCard.getBoundingClientRect().width;
-    const gap = 16; // gap-4 = 1rem = 16px
-
-    if (direction === 'left') {
-      switch (screenSize) {
-        case 'desktop':
-          return 0; // Scroll to start
-        case 'tablet':
-          return Math.max(0, scrollLeft - (cardWidth + gap) * 2);
-        case 'mobile':
-          return Math.max(0, scrollLeft - (cardWidth + gap));
-        default:
-          return 0;
-      }
-    } else {
-      // direction === 'right'
-      const maxScroll = scrollWidth - clientWidth;
-
-      switch (screenSize) {
-        case 'desktop':
-          return maxScroll; // Scroll to end
-        case 'tablet':
-          return Math.min(maxScroll, scrollLeft + (cardWidth + gap) * 2);
-        case 'mobile':
-          return Math.min(maxScroll, scrollLeft + (cardWidth + gap));
-        default:
-          return maxScroll;
-      }
-    }
-  };
-
-  // Scroll left
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = getScrollAmount('left');
-      scrollContainerRef.current.scrollTo({
-        left: scrollAmount,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  // Scroll right
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = getScrollAmount('right');
-      scrollContainerRef.current.scrollTo({
-        left: scrollAmount,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  // Check scroll position on mount and when scrolling
-  useEffect(() => {
-    checkScrollPosition();
-
-    const scrollContainer = scrollContainerRef.current;
-    if (scrollContainer) {
-      scrollContainer.addEventListener('scroll', checkScrollPosition);
-      window.addEventListener('resize', checkScrollPosition);
-
-      return () => {
-        scrollContainer.removeEventListener('scroll', checkScrollPosition);
-        window.removeEventListener('resize', checkScrollPosition);
-      };
-    }
-  }, []);
+  const { products, loading, error } = useFetchProducts({ numOfProducts: 10 });
+  const {
+    scrollContainerRef,
+    showLeftArrow,
+    showRightArrow,
+    scrollLeft,
+    scrollRight,
+  } = useScrollArrows();
 
   if (loading) {
     return (
@@ -211,7 +77,7 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
             ref={scrollContainerRef}
             className="flex overflow-x-auto gap-4 px-4 pb-4 no-scrollbar scroll-smooth"
           >
-            {Array.from({ length: PRODUCTS_TO_FETCH }).map((_, index) => (
+            {Array.from({ length: 10 }).map((_, index) => (
               <div key={index} className="flex-none">
                 <HomeCardSkeleton />
               </div>
