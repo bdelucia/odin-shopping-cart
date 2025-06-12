@@ -58,12 +58,18 @@ function ShopPage() {
             }}
           >
             <ShopCard
-              title={product.title}
-              description={product.description}
-              imageUrl={product.image}
-              imageAlt={product.title}
-              price={product.price.toFixed(2)}
-              rating={product.rating}
+              title={product.title || 'No Title'}
+              description={product.description || 'No Description'}
+              image={product.image || ''}
+              price={
+                typeof product.price === 'number'
+                  ? product.price.toFixed(2)
+                  : parseFloat(product.price || '0').toFixed(2)
+              }
+              rating={{
+                rate: product.rating?.rate ?? 0,
+                count: product.rating?.count ?? 0,
+              }}
             />
           </motion.div>
         ))}

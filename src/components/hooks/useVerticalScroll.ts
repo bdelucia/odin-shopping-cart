@@ -153,7 +153,7 @@ const useVerticalScroll = ({
         );
       }
     };
-  }, [hasScrolledDown, bottomThreshold, scrollOffset]);
+  });
 
   return {
     currentSection,

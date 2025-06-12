@@ -2,20 +2,21 @@ import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import QuantitySelector from './QuantitySelector';
 import { type CardProps } from '../types/CardProps';
+import { type Product } from '../types/Product';
 
-function ShopCard({
-  title,
-  description,
-  imageUrl,
-  imageAlt,
-  price,
-  rating,
-}: CardProps) {
+function ShopCard({ title, description, image, price, rating }: CardProps) {
   const [quantity, setQuantity] = useState(0);
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart(quantity);
+    const product: Product = {
+      title,
+      image,
+      description,
+      price,
+      rating,
+    };
+    addToCart(quantity, product);
     setQuantity(0);
   };
 
@@ -23,8 +24,7 @@ function ShopCard({
     <div className="flex flex-col bg-base-100 shadow-sm z-0 rounded-2xl border-3 border-base-content box-border hover:border-3 hover:border-accent transition-colors duration-300">
       <figure className="bg-white overflow-hidden rounded-t-xl">
         <img
-          src={imageUrl}
-          alt={imageAlt}
+          src={image}
           className="w-full h-48 object-contain p-4 rounded-2xl"
         />
       </figure>

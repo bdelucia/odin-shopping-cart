@@ -29,7 +29,7 @@ export default function useFetchProducts({
     };
 
     fetchProducts();
-  }, []);
+  });
 
   return { products, loading, error };
 }

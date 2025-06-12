@@ -173,12 +173,18 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
           {products.map((product) => (
             <div key={product.id} className="flex-none">
               <Card
-                key={product.id}
-                title={product.title}
-                imageUrl={product.image}
-                imageAlt={product.title}
-                price={product.price.toFixed(2)}
-                rating={product.rating}
+                title={product.title || 'No Title'}
+                description={product.description || 'No Description'}
+                image={product.image || ''}
+                price={
+                  typeof product.price === 'number'
+                    ? product.price.toFixed(2)
+                    : parseFloat(product.price || '0').toFixed(2)
+                }
+                rating={{
+                  rate: product.rating?.rate ?? 0,
+                  count: product.rating?.count ?? 0,
+                }}
               />
             </div>
           ))}
