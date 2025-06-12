@@ -3,14 +3,16 @@ import { ShopCardSkeleton } from '../cards/ShopCardSkeleton';
 import { motion } from 'framer-motion';
 import useFetchProducts from '../hooks/useFetchProducts';
 function ShopPage() {
-  const { products, loading, error } = useFetchProducts({ numOfProducts: 20 });
-
+  const NUM_OF_PRODUCTS = 20;
+  const { products, loading, error } = useFetchProducts({
+    numOfProducts: NUM_OF_PRODUCTS,
+  });
   // show skeleton cards when loading :) this is awesome
   if (loading) {
     return (
       <div className="min-h-screen bg-base-content pt-[7vh]">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 custom:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
-          {[...Array(20)].map((_, index) => (
+          {[...Array(NUM_OF_PRODUCTS)].map((_, index) => (
             <ShopCardSkeleton key={index} />
           ))}
         </div>

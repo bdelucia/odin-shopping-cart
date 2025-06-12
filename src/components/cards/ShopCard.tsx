@@ -47,6 +47,7 @@ function ShopCard({
             ${price}
           </div>
         )}
+        <div className="badge badge-accent badge-sm sm:badge-md">${}</div>
         <div className="card-actions flex-nowrap justify-between items-center mt-2">
           <QuantitySelector
             value={quantity}
