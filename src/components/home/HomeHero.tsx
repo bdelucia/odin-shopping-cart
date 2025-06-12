@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import HeroImage from '../../assets/hero.webp';
 import { motion } from 'framer-motion';
 
-function Hero() {
+function HomeHero() {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/shop');
@@ -42,4 +42,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default HomeHero;

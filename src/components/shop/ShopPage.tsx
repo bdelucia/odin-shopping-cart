@@ -44,7 +44,7 @@ function ShopPage() {
   }
 
   return (
-    <div className="min-h-screen bg-base-content pt-[7vh]">
+    <div className="min-h-screen bg-base-content pt-16">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 custom:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
         {products.map((product, index) => (
           <motion.div
