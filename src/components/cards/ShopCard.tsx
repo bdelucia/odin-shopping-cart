@@ -1,22 +1,15 @@
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import QuantitySelector from './QuantitySelector';
-
-type CardProps = {
-  title?: string;
-  description?: string;
-  imageUrl?: string;
-  imageAlt?: string;
-  buttonText?: string;
-  price?: string;
-};
+import { type CardProps } from '../types/CardProps';
 
 function ShopCard({
-  title = 'Card Title',
-  description = 'A card component has a figure, a body part, and inside body there are title and actions parts',
-  imageUrl = 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp',
-  imageAlt = 'Product Image',
-  price = '39.99',
+  title,
+  description,
+  imageUrl,
+  imageAlt,
+  price,
+  rating,
 }: CardProps) {
   const [quantity, setQuantity] = useState(0);
   const { addToCart } = useCart();
@@ -42,12 +35,34 @@ function ShopCard({
         <p className="h-16 text-xs sm:text-sm line-clamp-2 sm:line-clamp-3 flex-grow">
           {description}
         </p>
-        {price && (
-          <div className="badge badge-secondary badge-sm sm:badge-md">
-            ${price}
+        <div className="flex gap-2">
+          {price && (
+            <div className="badge badge-secondary badge-sm sm:badge-md">
+              ${price}
+            </div>
+          )}
+          <div className="badge badge-accent badge-sm sm:badge-md">
+            <div className="join gap-1.5">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                className="size-[1.5em] join-item"
+              >
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  fill="#FFD700"
+                  stroke="#000000"
+                  stroke-width="1.5"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <div className="join-item">{rating?.rate?.toFixed(1)}/5.0</div>
+            </div>{' '}
+            ({rating?.count})
           </div>
-        )}
-        <div className="badge badge-accent badge-sm sm:badge-md">${}</div>
+        </div>
         <div className="card-actions flex-nowrap justify-between items-center mt-2">
           <QuantitySelector
             value={quantity}

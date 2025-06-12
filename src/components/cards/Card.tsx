@@ -1,22 +1,9 @@
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import QuantitySelector from './QuantitySelector';
+import { type CardProps } from '../types/CardProps';
 
-type CardProps = {
-  title?: string;
-  description?: string;
-  imageUrl?: string;
-  imageAlt?: string;
-  buttonText?: string;
-  price?: string;
-};
-
-function Card({
-  title = 'Card Title',
-  imageUrl = 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp',
-  imageAlt = 'Product Image',
-  price = '39.99',
-}: CardProps) {
+function Card({ title, imageUrl, imageAlt, price, rating }: CardProps) {
   const [quantity, setQuantity] = useState(0);
   const { addToCart } = useCart();
 
@@ -27,7 +14,7 @@ function Card({
 
   return (
     <div className="flex flex-col bg-base-100 w-64 sm:w-64 lg:w-72 shadow-sm z-0 rounded-2xl border-3 border-base-content box-border hover:border-3 hover:border-accent transition-colors duration-300">
-      <figure className="h-32 sm:h-40 lg:h-48 bg-white overflow-hidden rounded-t-xl">
+      <figure className="h-48 sm:h-48 lg:h-48 bg-white overflow-hidden rounded-t-xl">
         <img
           src={imageUrl}
           alt={imageAlt}
@@ -39,11 +26,34 @@ function Card({
           {title}
         </h2>
         <p className="text-xs sm:text-sm line-clamp-2 sm:line-clamp-3"></p>
-        {price && (
-          <div className="badge badge-secondary badge-sm sm:badge-md">
-            ${price}
+        <div className="flex gap-2">
+          {price && (
+            <div className="badge badge-secondary badge-sm sm:badge-md">
+              ${price}
+            </div>
+          )}
+          <div className="badge badge-accent badge-sm sm:badge-md">
+            <div className="join gap-1.5">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                className="size-[1.5em] join-item"
+              >
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  fill="#FFD700"
+                  stroke="#000000"
+                  stroke-width="1.5"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <div className="join-item">{rating?.rate?.toFixed(1)}/5.0</div>
+            </div>{' '}
+            ({rating?.count})
           </div>
-        )}
+        </div>
         <div className="card-actions flex-nowrap justify-between items-center mt-2 ">
           <QuantitySelector
             value={quantity}

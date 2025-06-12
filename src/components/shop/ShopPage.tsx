@@ -63,6 +63,7 @@ function ShopPage() {
               imageUrl={product.image}
               imageAlt={product.title}
               price={product.price.toFixed(2)}
+              rating={product.rating}
             />
           </motion.div>
         ))}

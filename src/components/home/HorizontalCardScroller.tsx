@@ -178,6 +178,7 @@ function HorizontalCardScroller({ title }: HorizontalCardScrollerProps) {
                 imageUrl={product.image}
                 imageAlt={product.title}
                 price={product.price.toFixed(2)}
+                rating={product.rating}
               />
             </div>
           ))}
