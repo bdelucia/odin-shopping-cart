@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import HeroImage from '../assets/hero.webp';
+import HeroImage from '../../assets/hero.webp';
 import { motion } from 'framer-motion';
 
 function Hero() {

@@ -39,7 +39,7 @@ function ShopCard({
         <h2 className="card-title text-sm sm:text-base lg:text-lg line-clamp-1">
           {title}
         </h2>
-        <p className="text-xs sm:text-sm line-clamp-2 sm:line-clamp-3 flex-grow">
+        <p className="h-16 text-xs sm:text-sm line-clamp-2 sm:line-clamp-3 flex-grow">
           {description}
         </p>
         {price && (

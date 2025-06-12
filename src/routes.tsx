@@ -1,7 +1,7 @@
 import App from './App';
-import Home from './components/pages/HomePage';
-import Shop from './components/pages/ShopPage';
-import Cart from './components/pages/CartPage';
+import Home from './components/home/HomePage';
+import Shop from './components/shop/ShopPage';
+import Cart from './components/cart/CartPage';
 import type { RouteObject } from 'react-router-dom';
 
 const routes: RouteObject[] = [

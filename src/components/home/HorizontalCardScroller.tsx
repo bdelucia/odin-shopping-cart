@@ -1,7 +1,7 @@
-import Card from './cards/Card';
-import { HomeCardSkeleton } from './cards/CardSkeleton';
-import useFetchProducts from './hooks/useFetchProducts';
-import useScrollArrows from './hooks/useScrollArrows';
+import Card from '../cards/Card';
+import { HomeCardSkeleton } from '../cards/CardSkeleton';
+import useFetchProducts from '../hooks/useFetchProducts';
+import useScrollArrows from '../hooks/useScrollArrows';
 
 type HorizontalCardScrollerProps = {
   title: string;

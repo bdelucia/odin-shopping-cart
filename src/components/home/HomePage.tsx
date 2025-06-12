@@ -1,6 +1,6 @@
-import ScrollArrow from '../ScrollArrow';
-import HorizontalCardScroller from '../HorizontalCardScroller';
-import Hero from '../Hero';
+import ScrollArrow from './ScrollArrow';
+import HorizontalCardScroller from './HorizontalCardScroller';
+import Hero from './HomeHero';
 
 function HomePage() {
   return (

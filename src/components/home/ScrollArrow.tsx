@@ -1,5 +1,5 @@
 // components/ScrollArrow.tsx
-import useVerticalScroll from './hooks/useVerticalScroll';
+import useVerticalScroll from '../hooks/useVerticalScroll';
 
 function ScrollArrow() {
   const {
