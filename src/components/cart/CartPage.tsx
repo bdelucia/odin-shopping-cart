@@ -2,7 +2,7 @@ import { useCart } from '../context/CartContext';
 import CartCard from '../cards/CartCard';
 
 function CartPage() {
-  const { cartItems } = useCart();
+  const { cartItems, getCartQuantity } = useCart();
 
   return (
     <div className="flex justify-center items-center min-h-screen pt-16">
@@ -20,6 +20,7 @@ function CartPage() {
             rate: product.rating?.rate ?? 0,
             count: product.rating?.count ?? 0,
           }}
+          numOfItem={getCartQuantity(product.title)}
         />
       ))}
     </div>

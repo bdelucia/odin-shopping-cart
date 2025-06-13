@@ -6,9 +6,10 @@ function CartCard({ title, price, description, image, rating }: Product) {
   const { getCartQuantity, updateCartQuantity, removeFromCart } = useCart();
 
   // Get the actual quantity from cart context
-  const currentQuantity = getCartQuantity(title);
+  const currentQuantity = getCartQuantity(title || '');
 
   const handleQuantityChange = (newQuantity: number) => {
+    if (!title) return;
     if (newQuantity === 0) {
       // Remove item from cart if quantity is 0
       removeFromCart(title);
