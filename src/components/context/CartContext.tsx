@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useMemo } from 'react';
 import { type Product } from '../types/Product';
 
 interface CartContextType {
@@ -15,8 +15,12 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cartQuantity, setCartQuantity] = useState(0);
   const [cartItems, setCartItems] = useState<Product[]>([]);
+
+  // Calculate total quantity from cart items instead of tracking separately
+  const cartQuantity = useMemo(() => {
+    return cartItems.reduce((total, item) => total + item.numOfItem, 0);
+  }, [cartItems]);
 
   const addToCart = (quantity: number, product: Product) => {
     setCartItems((prev) => {
@@ -37,8 +41,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         return [...prev, { ...product, numOfItem: quantity }];
       }
     });
-
-    setCartQuantity((prev) => prev + quantity);
   };
 
   const getCartQuantity = (productTitle: string): number => {
@@ -53,13 +55,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       );
 
       if (existingItemIndex >= 0) {
-        const oldQuantity = prev[existingItemIndex].numOfItem;
-        const quantityDiff = newQuantity - oldQuantity;
-
-        // Update total cart quantity
-        setCartQuantity((prevTotal) => prevTotal + quantityDiff);
-
-        // Update the item
         const updatedItems = [...prev];
         updatedItems[existingItemIndex] = {
           ...updatedItems[existingItemIndex],
@@ -73,12 +68,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const removeFromCart = (productTitle: string) => {
     setCartItems((prev) => {
-      const itemToRemove = prev.find((item) => item.title === productTitle);
-      if (itemToRemove) {
-        setCartQuantity((prevTotal) => prevTotal - itemToRemove.numOfItem);
-        return prev.filter((item) => item.title !== productTitle);
-      }
-      return prev;
+      return prev.filter((item) => item.title !== productTitle);
     });
   };
 
