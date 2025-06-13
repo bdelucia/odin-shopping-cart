@@ -4,6 +4,7 @@ import { type Product } from '../types/Product';
 interface CartContextType {
   cartQuantity: number;
   cartItems: Product[];
+  cartTotal: number;
   addToCart: (quantity: number, product: Product) => void;
   getCartQuantity: (productTitle: string) => number;
   updateCartQuantity: (productTitle: string, newQuantity: number) => void;
@@ -20,6 +21,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   // Calculate total quantity from cart items instead of tracking separately
   const cartQuantity = useMemo(() => {
     return cartItems.reduce((total, item) => total + item.numOfItem, 0);
+  }, [cartItems]);
+
+  const cartTotal = useMemo(() => {
+    return cartItems.reduce(
+      (sum, item) => sum + Number(item.price) * item.numOfItem,
+      0.0
+    );
   }, [cartItems]);
 
   const addToCart = (quantity: number, product: Product) => {
@@ -77,6 +85,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         cartQuantity,
         cartItems,
+        cartTotal,
         addToCart,
         getCartQuantity,
         updateCartQuantity,

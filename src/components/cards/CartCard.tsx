@@ -2,7 +2,7 @@ import { useCart } from '../context/CartContext';
 import CartQuantitySelector from './CartQuantitySelector';
 import { type Product } from '../types/Product';
 
-function CartCard({ title, price, description, image, rating }: Product) {
+function CartCard({ title, price, image }: Product) {
   const { getCartQuantity, updateCartQuantity, removeFromCart } = useCart();
 
   // Get the actual quantity from cart context
@@ -20,49 +20,22 @@ function CartCard({ title, price, description, image, rating }: Product) {
   };
 
   return (
-    <div className="flex flex-col bg-base-100 shadow-sm z-0 rounded-2xl border-3 border-base-content box-border hover:border-3 hover:border-accent transition-colors duration-300">
-      <figure className="bg-white overflow-hidden rounded-t-xl">
-        <img
-          src={image}
-          className="w-full h-48 object-contain p-4 rounded-2xl"
-        />
+    <div className="flex flex-col md:flex-row items-start bg-base-100 shadow-sm z-0 rounded-2xl border-3 border-base-content box-border hover:border-3 hover:border-accent transition-colors duration-300">
+      <figure className="bg-white overflow-hidden rounded-t-xl md:rounded-t-none md:rounded-l-xl w-full md:min-w-48 md:max-w-48 flex justify-center items-center">
+        <img src={image} className="h-48 object-contain" />
       </figure>
-      <div className="card-body p-3 sm:p-4 lg:p-6 flex flex-col flex-grow">
+      <div className="card-body p-3 sm:p-4 lg:p-6 gap-4">
         <h2 className="card-title text-sm sm:text-base lg:text-lg line-clamp-1">
           {title}
         </h2>
-        <p className="h-16 text-xs sm:text-sm line-clamp-2 sm:line-clamp-3 flex-grow">
-          {description}
-        </p>
-        {price && (
-          <div className="badge badge-secondary badge-sm sm:badge-md">
-            ${price}
-          </div>
-        )}
-        <div className="flex gap-2">
-          <div className="badge badge-accent badge-sm sm:badge-md">
-            <div className="join gap-1.5">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-[1.5em] join-item"
-              >
-                <path
-                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                  fill="#FFD700"
-                  stroke="#000000"
-                  stroke-width="1.5"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <div className="join-item">{rating?.rate?.toFixed(1)}/5.0</div>
-            </div>{' '}
-            ({rating?.count})
-          </div>
+        <div className="flex flex-grow">
+          {price && (
+            <div className="badge badge-secondary badge-sm sm:badge-md">
+              ${price}
+            </div>
+          )}
         </div>
-        <div className="card-actions flex-nowrap justify-between items-center mt-2">
+        <div className="">
           <CartQuantitySelector
             value={currentQuantity}
             onChange={handleQuantityChange}
