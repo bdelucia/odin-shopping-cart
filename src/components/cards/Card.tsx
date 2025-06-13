@@ -15,6 +15,7 @@ function Card({ title, image, description, price, rating }: CardProps) {
       description,
       price,
       rating,
+      numOfItem: quantity,
     };
     addToCart(quantity, product);
     setQuantity(0);

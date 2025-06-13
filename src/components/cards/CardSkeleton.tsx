@@ -1,6 +1,6 @@
 export function HomeCardSkeleton() {
   return (
-    <div className="flex flex-col bg-base-100 w-64 sm:w-64 lg:w-72 shadow-sm z-0 rounded-2xl animate-pulse">
+    <div className="flex flex-col flex-3/4 bg-base-100 w-64 sm:w-64 lg:w-72 shadow-sm z-0 rounded-2xl animate-pulse">
       <figure className="h-48 sm:h-48 lg:h-48 overflow-hidden bg-white rounded-t-2xl "></figure>
       <div className="card-body p-3 sm:p-4 lg:p-6">
         <div className="flex items-center gap-2">

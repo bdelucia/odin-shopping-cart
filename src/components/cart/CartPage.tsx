@@ -1,13 +1,13 @@
 import { useCart } from '../context/CartContext';
-import ShopCard from '../cards/ShopCard';
+import CartCard from '../cards/CartCard';
 
 function CartPage() {
   const { cartItems } = useCart();
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen pt-16">
+    <div className="flex justify-center items-center min-h-screen pt-16">
       {cartItems.map((product) => (
-        <ShopCard
+        <CartCard
           title={product.title || 'No Title'}
           description={product.description || 'No Description'}
           image={product.image || ''}

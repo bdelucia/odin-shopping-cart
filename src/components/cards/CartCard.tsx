@@ -1,24 +1,21 @@
-import { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import QuantitySelector from './QuantitySelector';
-import { type CardProps } from '../types/CardProps';
+import CartQuantitySelector from './CartQuantitySelector';
 import { type Product } from '../types/Product';
 
-function ShopCard({ title, description, image, price, rating }: CardProps) {
-  const [quantity, setQuantity] = useState(0);
-  const { addToCart } = useCart();
+function CartCard({ title, price, description, image, rating }: Product) {
+  const { getCartQuantity, updateCartQuantity, removeFromCart } = useCart();
 
-  const handleAddToCart = () => {
-    const product: Product = {
-      title,
-      image,
-      description,
-      price,
-      rating,
-      numOfItem: quantity,
-    };
-    addToCart(quantity, product);
-    setQuantity(0);
+  // Get the actual quantity from cart context
+  const currentQuantity = getCartQuantity(title);
+
+  const handleQuantityChange = (newQuantity: number) => {
+    if (newQuantity === 0) {
+      // Remove item from cart if quantity is 0
+      removeFromCart(title);
+    } else {
+      // Update cart quantity
+      updateCartQuantity(title, newQuantity);
+    }
   };
 
   return (
@@ -36,12 +33,12 @@ function ShopCard({ title, description, image, price, rating }: CardProps) {
         <p className="h-16 text-xs sm:text-sm line-clamp-2 sm:line-clamp-3 flex-grow">
           {description}
         </p>
+        {price && (
+          <div className="badge badge-secondary badge-sm sm:badge-md">
+            ${price}
+          </div>
+        )}
         <div className="flex gap-2">
-          {price && (
-            <div className="badge badge-secondary badge-sm sm:badge-md">
-              ${price}
-            </div>
-          )}
           <div className="badge badge-accent badge-sm sm:badge-md">
             <div className="join gap-1.5">
               <svg
@@ -65,23 +62,16 @@ function ShopCard({ title, description, image, price, rating }: CardProps) {
           </div>
         </div>
         <div className="card-actions flex-nowrap justify-between items-center mt-2">
-          <QuantitySelector
-            value={quantity}
-            onChange={(value) => setQuantity(value)}
+          <CartQuantitySelector
+            value={currentQuantity}
+            onChange={handleQuantityChange}
             min={0}
             max={10}
           />
-          <button
-            className="btn btn-primary btn-xs sm:btn-xs lg:btn-sm"
-            onClick={handleAddToCart}
-            disabled={quantity === 0}
-          >
-            Add to Cart
-          </button>
         </div>
       </div>
     </div>
   );
 }
 
-export default ShopCard;
+export default CartCard;
