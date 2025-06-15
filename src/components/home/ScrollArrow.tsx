@@ -29,12 +29,14 @@ function ScrollArrow() {
             onClick={scrollToPreviousSection}
             className="btn btn-circle btn-primary shadow-lg hover:shadow-xl transition-all duration-300"
             aria-label="Scroll up to previous section"
+            type="button"
           >
             <svg
               className="w-6 h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -53,12 +55,14 @@ function ScrollArrow() {
             onClick={scrollToNextSection}
             className="btn btn-circle btn-primary shadow-lg hover:shadow-xl transition-all duration-300 animate-bounce"
             aria-label="Scroll down to next section"
+            type="button"
           >
             <svg
               className="w-6 h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -70,7 +74,11 @@ function ScrollArrow() {
           </button>
 
           {/* Section indicator dots */}
-          <div className="flex justify-center mt-2 space-x-1">
+          <div
+            className="flex justify-center mt-2 space-x-1"
+            role="group"
+            aria-label="Section indicators"
+          >
             {Array.from({ length: totalSections }, (_, index) => (
               <div
                 key={index}
@@ -79,6 +87,7 @@ function ScrollArrow() {
                     ? 'bg-primary scale-125'
                     : 'bg-primary/30'
                 }`}
+                aria-hidden="true"
               />
             ))}
           </div>

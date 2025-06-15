@@ -22,7 +22,7 @@ function CartCard({ title, price, image }: Product) {
   return (
     <div className="flex flex-col md:flex-row items-start bg-base-100 shadow-sm z-0 rounded-2xl border-3 border-base-content box-border hover:border-3 hover:border-accent transition-colors duration-300">
       <figure className="bg-gray-200 overflow-hidden rounded-t-xl md:rounded-t-none md:rounded-l-xl w-full md:min-w-48 md:max-w-48 flex justify-center items-center">
-        <img src={image} className="h-48 object-contain p-4" />
+        <img src={image} alt={title} className="h-48 object-contain p-4" />
       </figure>
       <div className="card-body pb-0 sm:pb-4">
         <h2 className="card-title text-sm sm:text-base lg:text-lg line-clamp-1">
@@ -31,7 +31,7 @@ function CartCard({ title, price, image }: Product) {
         <div className="flex flex-col gap-12">
           {price && (
             <div className="badge badge-secondary badge-sm sm:badge-md">
-              ${price}
+              <span className="sr-only">Price:</span> ${price}
             </div>
           )}
           <div className="pb-4 sm:pb-4 md:pb-0 lg:pb-0">
@@ -40,6 +40,7 @@ function CartCard({ title, price, image }: Product) {
               onChange={handleQuantityChange}
               min={0}
               max={10}
+              aria-label={`Quantity for ${title}`}
             />
           </div>
         </div>

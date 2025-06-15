@@ -32,6 +32,7 @@ function HomeHero() {
             <button
               className="btn btn-accent btn-sm sm:btn-md lg:btn-lg"
               onClick={handleClick}
+              aria-label="Browse wares and shop items"
             >
               Browse Wares
             </button>

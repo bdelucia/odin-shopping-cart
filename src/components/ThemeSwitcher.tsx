@@ -34,15 +34,20 @@ function ThemeSwitcher() {
   }, []);
 
   return (
-    <div className="join join-vertical theme-container">
+    <fieldset
+      className="join join-vertical theme-container"
+      role="radiogroup"
+      aria-label="Theme selector"
+    >
       {themes.map((theme) => (
-        <button
+        <label
           key={theme}
-          className="theme-button flex justify-center items-center gap-1 sm:gap-2 px-2 sm:px-4"
+          className="theme-button flex justify-center items-center gap-1 sm:gap-2 px-2 sm:px-4 cursor-pointer"
         >
           <div
             data-theme={theme}
             className="theme-preview bg-base-100 size-5 sm:size-7 grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-0.5 sm:p-1 shadow-sm items-center"
+            aria-hidden="true"
           >
             <div className="bg-base-content size-1.5 sm:size-2 rounded-full"></div>
             <div className="bg-primary size-1.5 sm:size-2 rounded-full"></div>
@@ -53,15 +58,17 @@ function ThemeSwitcher() {
             type="radio"
             name="theme-buttons"
             className="btn btn-outline landscape-input sm:btn-md theme-controller join-item min-w-full h-auto py-1 sm:py-2"
-            aria-label={theme.charAt(0).toUpperCase() + theme.slice(1)}
+            aria-label={`${
+              theme.charAt(0).toUpperCase() + theme.slice(1)
+            } theme`}
             value={theme}
-            data-set-theme={theme}
             checked={currentTheme === theme}
             onChange={() => setCurrentTheme(theme)}
           />
-        </button>
+          <span className="sr-only">{theme} theme</span>
+        </label>
       ))}
-    </div>
+    </fieldset>
   );
 }
 

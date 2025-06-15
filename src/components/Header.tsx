@@ -17,9 +17,13 @@ function Header() {
       </div>
       <div className="navbar-center">
         <ShopButton />
-        <a className="btn normal-case text-xl" onClick={handleClick}>
+        <button
+          className="btn normal-case text-xl"
+          onClick={handleClick}
+          aria-label="Go to home page"
+        >
           The Bob Shop
-        </a>
+        </button>
         <ShoppingCartButton />
       </div>
       <div className="navbar-end p-2"></div>

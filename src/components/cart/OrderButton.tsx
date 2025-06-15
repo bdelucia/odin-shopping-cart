@@ -56,6 +56,7 @@ const OrderButton = () => {
   return (
     <button
       className="btn btn-accent text-accent-content complete-order-btn"
+      aria-label="Complete your order"
       onClick={handleCompleteOrder}
     >
       Complete Order

@@ -9,9 +9,18 @@ function ShoppingCartButton() {
   };
 
   return (
-    <button className="btn btn-square ml-2" onClick={handleCartReroute}>
+    <button
+      className="btn btn-square ml-2"
+      onClick={handleCartReroute}
+      aria-label={`Shopping cart with ${cartQuantity} item${
+        cartQuantity !== 1 ? 's' : ''
+      }`}
+    >
       <div className="indicator">
-        <span className="indicator-item size-5 badge badge-accent">
+        <span
+          className="indicator-item size-5 badge badge-accent"
+          aria-hidden="true"
+        >
           {cartQuantity}
         </span>
         <svg
@@ -21,6 +30,7 @@ function ShoppingCartButton() {
           strokeWidth={1.5}
           stroke="currentColor"
           className="w-6 h-6"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"

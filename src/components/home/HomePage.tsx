@@ -4,7 +4,7 @@ import Hero from './HomeHero';
 
 function HomePage() {
   return (
-    <>
+    <div className="overflow-hidden">
       <Hero />
 
       <div className="min-h-[100dvh] bg-base-200 flex flex-col justify-center py-8 sm:py-16">
@@ -20,7 +20,7 @@ function HomePage() {
       </div>
 
       <ScrollArrow />
-    </>
+    </div>
   );
 }
 

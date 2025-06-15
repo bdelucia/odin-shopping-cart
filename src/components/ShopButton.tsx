@@ -6,7 +6,11 @@ function ShopButton() {
     navigate('/shop');
   };
   return (
-    <button className="btn btn-square mr-2" onClick={handleShopReroute}>
+    <button
+      className="btn btn-square mr-2"
+      onClick={handleShopReroute}
+      aria-label="Go to shop page"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -14,6 +18,7 @@ function ShopButton() {
         strokeWidth={1.5}
         stroke="currentColor"
         className="w-6 h-6"
+        aria-hidden="true"
       >
         <path
           strokeLinecap="round"
