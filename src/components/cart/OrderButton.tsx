@@ -4,6 +4,12 @@ const OrderButton = () => {
   const handleCompleteOrder = () => {
     // Get button position for confetti origin
     const button = document.querySelector('.complete-order-btn');
+
+    if (!button) {
+      console.warn('Button not found for confetti positioning');
+      return;
+    }
+
     const rect = button.getBoundingClientRect();
 
     // Calculate the center of the button relative to the viewport
@@ -53,19 +59,6 @@ const OrderButton = () => {
       onClick={handleCompleteOrder}
     >
       Complete Order
-      <svg
-        className="w-4 h-4"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M9 5l7 7-7 7"
-        ></path>
-      </svg>
     </button>
   );
 };
