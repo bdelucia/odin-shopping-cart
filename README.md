@@ -15,6 +15,22 @@ The Bob Shop is a responsive and modern e-commerce storefront built using React,
 </p>
 
 
+### Chrome Lighthouse audit (desktop) results:
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8339872d-52a1-4c0c-ab59-d139e27decc7" alt="Chrome Lighthouse desktop audit" />
+</p>
+
+### Lighthouse audit (mobile) results:
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/83b15e86-a852-4b4e-bbff-605485dc9575" alt="Lighthouse mobile audit" />
+</p>
+
+### Vercel Speed Insights:
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ccf07cc7-ae85-422a-8b84-9709263e7fc0" alt="Vercel Speed Insights" />
+</p>
+
+
 Here are the steps to run the website's code on your computer:
 1. Clone the repo locally
 ```
