@@ -21,27 +21,27 @@ function CartCard({ title, price, image }: Product) {
 
   return (
     <div className="flex flex-col md:flex-row items-start bg-base-100 shadow-sm z-0 rounded-2xl border-3 border-base-content box-border hover:border-3 hover:border-accent transition-colors duration-300">
-      <figure className="bg-white overflow-hidden rounded-t-xl md:rounded-t-none md:rounded-l-xl w-full md:min-w-48 md:max-w-48 flex justify-center items-center">
-        <img src={image} className="h-48 object-contain" />
+      <figure className="bg-gray-200 overflow-hidden rounded-t-xl md:rounded-t-none md:rounded-l-xl w-full md:min-w-48 md:max-w-48 flex justify-center items-center">
+        <img src={image} className="h-48 object-contain p-4" />
       </figure>
-      <div className="card-body p-3 sm:p-4 lg:p-6 gap-4">
+      <div className="card-body pb-0 sm:pb-4">
         <h2 className="card-title text-sm sm:text-base lg:text-lg line-clamp-1">
           {title}
         </h2>
-        <div className="flex flex-grow">
+        <div className="flex flex-col gap-12">
           {price && (
             <div className="badge badge-secondary badge-sm sm:badge-md">
               ${price}
             </div>
           )}
-        </div>
-        <div className="">
-          <CartQuantitySelector
-            value={currentQuantity}
-            onChange={handleQuantityChange}
-            min={0}
-            max={10}
-          />
+          <div className="pb-4 sm:pb-4 md:pb-0 lg:pb-0">
+            <CartQuantitySelector
+              value={currentQuantity}
+              onChange={handleQuantityChange}
+              min={0}
+              max={10}
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -5,6 +5,8 @@ interface CartContextType {
   cartQuantity: number;
   cartItems: Product[];
   cartTotal: number;
+  taxTotal: number;
+  orderTotal: number;
   addToCart: (quantity: number, product: Product) => void;
   getCartQuantity: (productTitle: string) => number;
   updateCartQuantity: (productTitle: string, newQuantity: number) => void;
@@ -29,6 +31,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       0.0
     );
   }, [cartItems]);
+
+  const taxTotal = useMemo(() => {
+    return cartTotal * 0.098;
+  }, [cartTotal]);
+
+  const orderTotal = useMemo(() => {
+    return cartTotal + taxTotal + 0.69;
+  }, [cartTotal, taxTotal]);
 
   const addToCart = (quantity: number, product: Product) => {
     setCartItems((prev) => {
@@ -86,6 +96,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
         cartQuantity,
         cartItems,
         cartTotal,
+        taxTotal,
+        orderTotal,
         addToCart,
         getCartQuantity,
         updateCartQuantity,

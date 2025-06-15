@@ -7,17 +7,17 @@ function HomePage() {
     <>
       <Hero />
 
-      <section className="min-h-[100dvh] bg-base-200 flex flex-col justify-center py-8 sm:py-16">
+      <div className="min-h-[100dvh] bg-base-200 flex flex-col justify-center py-8 sm:py-16">
         <div className="container mx-auto">
           <HorizontalCardScroller title="Featured Products" />
         </div>
-      </section>
+      </div>
 
-      <section className="min-h-[100dvh] bg-secondary flex flex-col items-center justify-center py-8 sm:py-16">
+      <div className="min-h-[100dvh] bg-secondary flex flex-col items-center justify-center py-8 sm:py-16">
         <div className="container mx-auto">
           <HorizontalCardScroller title="Recommended For You" />
         </div>
-      </section>
+      </div>
 
       <ScrollArrow />
     </>

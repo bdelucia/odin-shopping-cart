@@ -23,7 +23,7 @@ function ShopCard({ title, description, image, price, rating }: CardProps) {
 
   return (
     <div className="flex flex-col bg-base-100 shadow-sm z-0 rounded-2xl border-3 border-base-content box-border hover:border-3 hover:border-accent transition-colors duration-300">
-      <figure className="bg-white overflow-hidden rounded-t-xl">
+      <figure className="bg-gray-200 overflow-hidden rounded-t-xl">
         <img
           src={image}
           className="w-full h-48 object-contain p-4 rounded-2xl"
