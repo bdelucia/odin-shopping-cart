@@ -30,13 +30,13 @@ function QuantitySelector({
   };
 
   return (
-    <div className="join">
+    <div className="join" role="group" aria-label="Quantity selector">
       <button
         className="join-item btn btn-primary btn-soft border-primary btn-xs sm:btn-xs md:btn-xs lg:btn-sm btn-ghost btn-square"
         onClick={handleDecrease}
         disabled={value <= min}
+        aria-label="Decrease quantity"
       >
-        {/* minus icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -44,10 +44,12 @@ function QuantitySelector({
           strokeWidth={1.5}
           stroke="currentColor"
           className="w-4 h-4"
+          aria-hidden="true"
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
         </svg>
       </button>
+
       <input
         type="number"
         className="join-item no-spinner input input-primary input-xs sm:input-xs sm:w-12 md:input-xs lg:input-sm md:w-14 text-center font-semibold lg:text-lg"
@@ -55,13 +57,18 @@ function QuantitySelector({
         onChange={handleInputChange}
         min={min}
         max={max}
+        aria-label="Quantity"
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuenow={value}
       />
+
       <button
         className="join-item btn btn-primary btn-soft border-primary btn-xs md:btn-xs lg:btn-sm sm:btn-xs btn-ghost btn-square"
         onClick={handleIncrease}
         disabled={value >= max}
+        aria-label="Increase quantity"
       >
-        {/* plus icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -69,6 +76,7 @@ function QuantitySelector({
           strokeWidth={1.5}
           stroke="currentColor"
           className="w-4 h-4"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"

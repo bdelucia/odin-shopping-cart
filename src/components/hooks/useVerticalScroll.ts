@@ -1,20 +1,17 @@
-// hooks/useVerticalScroll.ts
 import { useState, useEffect } from 'react';
 
 interface UseVerticalScrollOptions {
-  scrollOffset?: number; // Percentage offset for mobile landscape (default: 0.9)
-  bottomThreshold?: number; // Pixels from bottom to consider "at bottom" (default: 50)
-  scrollBehavior?: ScrollBehavior; // 'smooth' or 'auto' (default: 'smooth')
+  scrollOffset?: number;
+  bottomThreshold?: number;
+  scrollBehavior?: ScrollBehavior;
 }
 
 interface UseVerticalScrollReturn {
   currentSection: number;
   totalSections: number;
-  isUpVisible: boolean;
   isDownVisible: boolean;
   isMobileLandscape: boolean;
   scrollToNextSection: () => void;
-  scrollToPreviousSection: () => void;
 }
 
 const useVerticalScroll = ({
@@ -24,8 +21,6 @@ const useVerticalScroll = ({
 }: UseVerticalScrollOptions = {}): UseVerticalScrollReturn => {
   const [currentSection, setCurrentSection] = useState(0);
   const [isDownVisible, setIsDownVisible] = useState(true);
-  const [isUpVisible, setIsUpVisible] = useState(false);
-  const [hasScrolledDown, setHasScrolledDown] = useState(false);
 
   // Detect if we're on mobile landscape
   const isMobileLandscapeCheck = () => {
@@ -40,11 +35,7 @@ const useVerticalScroll = ({
 
   // Get the actual viewport height accounting for browser chrome
   const getViewportHeight = () => {
-    // Use visualViewport if available (better for mobile)
-    if (window.visualViewport) {
-      return window.visualViewport.height;
-    }
-    return window.innerHeight;
+    return window.visualViewport?.height || window.innerHeight;
   };
 
   // Calculate total sections based on page height
@@ -62,7 +53,6 @@ const useVerticalScroll = ({
     const totalSectionsCount = getTotalSections();
     const nextSection = currentSection + 1;
 
-    // Add offset for mobile landscape
     const scrollOffsetValue = isMobileLandscape
       ? viewportHeight * scrollOffset
       : viewportHeight;
@@ -82,25 +72,6 @@ const useVerticalScroll = ({
     }
 
     setCurrentSection(nextSection);
-    setHasScrolledDown(true);
-  };
-
-  const scrollToPreviousSection = () => {
-    const viewportHeight = getViewportHeight();
-    const previousSection = Math.max(0, currentSection - 1);
-
-    // Add offset for mobile landscape
-    const scrollOffsetValue = isMobileLandscape
-      ? viewportHeight * scrollOffset
-      : viewportHeight;
-    const scrollTo = previousSection * scrollOffsetValue;
-
-    window.scrollTo({
-      top: scrollTo,
-      behavior: scrollBehavior,
-    });
-
-    setCurrentSection(previousSection);
   };
 
   // Update state based on scroll position and viewport changes
@@ -115,17 +86,13 @@ const useVerticalScroll = ({
       const isAtBottom =
         scrolled + viewportHeight >= totalHeight - bottomThreshold;
 
-      let currentSectionNum;
-      if (isAtBottom) {
-        currentSectionNum = totalSectionsCount - 1;
-      } else {
-        currentSectionNum = Math.round(scrolled / viewportHeight);
-      }
+      const currentSectionNum = isAtBottom
+        ? totalSectionsCount - 1
+        : Math.round(scrolled / viewportHeight);
 
       setCurrentSection(currentSectionNum);
       setTotalSections(totalSectionsCount);
       setIsDownVisible(!isAtBottom);
-      setIsUpVisible(hasScrolledDown && currentSectionNum > 0);
     };
 
     const handleViewportChange = () => {
@@ -136,7 +103,6 @@ const useVerticalScroll = ({
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleViewportChange);
 
-    // Listen for visual viewport changes if available
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', handleViewportChange);
     }
@@ -158,11 +124,9 @@ const useVerticalScroll = ({
   return {
     currentSection,
     totalSections,
-    isUpVisible,
     isDownVisible,
     isMobileLandscape,
     scrollToNextSection,
-    scrollToPreviousSection,
   };
 };
 

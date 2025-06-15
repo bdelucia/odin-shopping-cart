@@ -5,11 +5,9 @@ function ScrollArrow() {
   const {
     currentSection,
     totalSections,
-    isUpVisible,
     isDownVisible,
     isMobileLandscape,
     scrollToNextSection,
-    scrollToPreviousSection,
   } = useVerticalScroll({
     scrollOffset: 0.9,
     bottomThreshold: 50,
@@ -23,32 +21,6 @@ function ScrollArrow() {
 
   return (
     <>
-      {isUpVisible && (
-        <div className="fixed top-[10dvh] left-1/2 transform -translate-x-1/2 z-40">
-          <button
-            onClick={scrollToPreviousSection}
-            className="btn btn-circle btn-primary shadow-lg hover:shadow-xl transition-all duration-300"
-            aria-label="Scroll up to previous section"
-            type="button"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 10l7-7m0 0l7 7m-7-7v18"
-              />
-            </svg>
-          </button>
-        </div>
-      )}
-
       {isDownVisible && (
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40">
           <button

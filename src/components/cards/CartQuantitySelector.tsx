@@ -29,7 +29,7 @@ function CartQuantitySelector({
     onChange?.(newValue);
   };
 
-  // Icon components
+  // Icon components with accessibility improvements
   const TrashIcon = () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -38,6 +38,7 @@ function CartQuantitySelector({
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-4 h-4"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"
@@ -55,6 +56,7 @@ function CartQuantitySelector({
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-4 h-4"
+      aria-hidden="true"
     >
       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
     </svg>
@@ -68,6 +70,7 @@ function CartQuantitySelector({
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-4 h-4"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"
@@ -84,11 +87,15 @@ function CartQuantitySelector({
     : 'join-item btn btn-primary btn-soft border-primary btn-xs sm:btn-xs md:btn-xs lg:btn-sm btn-ghost btn-square';
 
   return (
-    <div className="join">
+    <div className="join" role="group" aria-label="Cart item quantity selector">
       <button
         className={buttonClass}
         onClick={handleDecrease}
         disabled={value <= min}
+        aria-label={
+          isMinQuantity ? 'Remove item from cart' : 'Decrease quantity'
+        }
+        title={isMinQuantity ? 'Remove item from cart' : 'Decrease quantity'}
       >
         {isMinQuantity ? <TrashIcon /> : <MinusIcon />}
       </button>
@@ -100,12 +107,19 @@ function CartQuantitySelector({
         onChange={handleInputChange}
         min={min}
         max={max}
+        aria-label="Item quantity"
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuenow={value}
+        title="Item quantity"
       />
 
       <button
         className="join-item btn btn-primary btn-soft border-primary btn-xs md:btn-xs lg:btn-sm sm:btn-xs btn-ghost btn-square"
         onClick={handleIncrease}
         disabled={value >= max}
+        aria-label="Increase quantity"
+        title="Increase quantity"
       >
         <PlusIcon />
       </button>
