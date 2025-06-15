@@ -18,8 +18,8 @@ function HomeHero() {
       <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 40 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.6 }}
           >
             <h1 className="mb-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold italic text-primary">
