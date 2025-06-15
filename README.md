@@ -10,7 +10,9 @@ The Bob Shop is a responsive and modern e-commerce storefront built using React,
   🔗 [View the Live Site](https://odin-shopping-cart-weld.vercel.app/)
 
 ## Mobile Preview:
-![unnamed](https://github.com/user-attachments/assets/bb2fb48b-8f50-4b2d-9ba4-381ed7013e45)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/bb2fb48b-8f50-4b2d-9ba4-381ed7013e45" alt="unnamed" style="width: 40%; height: auto;" />
+</p>
 
 
 Here are the steps to run the website's code on your computer:
