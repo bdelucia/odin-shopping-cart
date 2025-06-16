@@ -42,6 +42,10 @@ cd odin-shopping-cart
 npm install
 ```
 
+## 🌟 Stargazers over time
+
+[![Stargazers over time](https://chart.yhype.me/github/repository-star/v1/997090580.svg)](https://yhype.me?utm_source=github&utm_medium=bdelucia-odin-shopping-cart&utm_content=chart-repository-star-cumulative)
+
 3. Run the development server
 ```
 npm run dev
