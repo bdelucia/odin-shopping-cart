@@ -1,6 +1,8 @@
 # 🛒 The Bob Shop
 An e-commerce website built with React, TypeScript, Vite, and DaisyUI
 
+### 🌟 Leave a star if you liked this website!
+
 ## Desktop preview:
 ![image](https://github.com/user-attachments/assets/ca03b04a-427c-4184-8ad9-a9edcb732a63)
 The Bob Shop is a responsive and modern e-commerce storefront built using React, TypeScript, Vite, and styled with DaisyUI (TailwindCSS-based component library). It supports a seamless shopping experience across both desktop and mobile devices.
